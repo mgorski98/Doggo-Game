@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Main Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Main
+  m_TableCollectionNameGuidString: a7352774da305264e8eccb6b71667a41
+  m_Entries:
+  - m_Id: 73353015296
+    m_Key: doggo-chihuahua
+    m_Metadata:
+      m_Items: []
+  - m_Id: 115476410368
+    m_Key: doggo-dalmatian
+    m_Metadata:
+      m_Items: []
+  - m_Id: 162461003776
+    m_Key: doggo-german-shepherd
+    m_Metadata:
+      m_Items: []
+  - m_Id: 166974074880
+    m_Key: doggo-corgi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 169197056000
+    m_Key: doggo-pug
+    m_Metadata:
+      m_Items: []
+  - m_Id: 174175694848
+    m_Key: doggo-beagle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 179456323584
+    m_Key: doggo-labrador
+    m_Metadata:
+      m_Items: []
+  - m_Id: 181964517376
+    m_Key: doggo-st-bernard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 183449300992
+    m_Key: doggo-golden-retriever
+    m_Metadata:
+      m_Items: []
+  - m_Id: 185085079552
+    m_Key: doggo-great-dane
+    m_Metadata:
+      m_Items: []
+  - m_Id: 186712469504
+    m_Key: doggo-dachshund
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 3177310583825367088
+  references:
+    version: 2
+    RefIds:
+    - rid: 3177310583825367088
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1701899282402
