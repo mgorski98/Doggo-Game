@@ -1,3 +1,6 @@
 Doggo game progression from smallest to biggest (smallest - chihuahua, biggest - great dane):
 
 all dogs: Chihuahua, Dachshund, Pug, Beagle, Corgi, Dalmatian, Golden Retriever, German Shepherd, Labrador, Great Dane, St. Bernard
+
+todosy: dodać efekty wizualne i dźwiękowe (jak wyskakujące losowo zrotowane napisy "Great!" "Wow!", "Woof!", etc.)
+dodać muzyczkę w tle (loop)

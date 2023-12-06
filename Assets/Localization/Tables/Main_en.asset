@@ -62,6 +62,10 @@ MonoBehaviour:
     m_Localized: Dachshund
     m_Metadata:
       m_Items: []
+  - m_Id: 18201071988736
+    m_Localized: Score
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

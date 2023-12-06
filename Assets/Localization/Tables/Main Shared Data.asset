@@ -59,6 +59,10 @@ MonoBehaviour:
     m_Key: doggo-dachshund
     m_Metadata:
       m_Items: []
+  - m_Id: 18201071988736
+    m_Key: ui-score
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
