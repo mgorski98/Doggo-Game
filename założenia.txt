@@ -7,3 +7,6 @@ dodać muzyczkę w tle (loop)
 dodać leaderboardsy (wraz z ikonkami pucharków lub kolorkami)
 dostosować collidery i rozmiary piesków (same głowy)
 zrobić setup panelu z kolejnością piesuw
+dodać rotujące się cały czas głowy piesuw w głównym menu (różne prędkości, może randomizowane?)
+zmienić ikony buttonów na głowy piesuw (jak najedzie się myszką to niech się podświetlą wraz z napisem :3)
+dodać możliwość wyjścia z gry
