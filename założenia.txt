@@ -4,3 +4,6 @@ all dogs: Chihuahua, Dachshund, Pug, Beagle, Corgi, Dalmatian, Golden Retriever,
 
 todosy: dodać efekty wizualne i dźwiękowe (jak wyskakujące losowo zrotowane napisy "Great!" "Wow!", "Woof!", etc.)
 dodać muzyczkę w tle (loop)
+dodać leaderboardsy (wraz z ikonkami pucharków lub kolorkami)
+dostosować collidery i rozmiary piesków (same głowy)
+zrobić setup panelu z kolejnością piesuw
