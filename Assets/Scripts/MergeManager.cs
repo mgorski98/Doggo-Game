@@ -25,9 +25,14 @@ public class MergeManager : SerializedMonoBehaviour {
             var rot = (obj1.transform.eulerAngles + obj2.transform.eulerAngles) / 2f;
             Instantiate(prefab, pos, Quaternion.Euler(rot));
         }
+
         int score = data.MergeScore;
-        //todo: add score to player progress
-        //todo: play woof sound from doggo data
+        PlayerProgress.Instance.AddScore(score);
+
+        if (data.BarkSounds.Length > 0) {
+            var clip = data.BarkSounds[Random.Range(0, data.BarkSounds.Length)];
+            AudioSource.PlayClipAtPoint(clip, Vector3.zero);
+        }
 
         Destroy(obj1);
         Destroy(obj2);

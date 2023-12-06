@@ -2,8 +2,10 @@
 using UnityEngine;
 
 public class PlayerProgress : MonoBehaviour {
-    public TextMeshProUGUI Score;
-    public TextMeshProUGUI GameTime;
+    public TextMeshProUGUI ScoreText;
+    public TextMeshProUGUI GameTimeText;
+
+    public long Score;
 
     public static PlayerProgress Instance { get; private set; } = null;
 
@@ -15,5 +17,10 @@ public class PlayerProgress : MonoBehaviour {
         if (Instance == this) {
             Instance = null;
         }
+    }
+
+    public void AddScore(int score) {
+        this.Score += score;
+        ScoreText.text = this.Score.ToString();
     }
 }
