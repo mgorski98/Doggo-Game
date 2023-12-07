@@ -147,6 +147,34 @@ MonoBehaviour:
       me)
     m_Metadata:
       m_Items: []
+  - m_Id: 389009200001024
+    m_Localized: Author
+    m_Metadata:
+      m_Items: []
+  - m_Id: 389011058077696
+    m_Localized: Credits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 389046692884480
+    m_Localized: Assets
+    m_Metadata:
+      m_Items: []
+  - m_Id: 389141786144768
+    m_Localized: Game by DingDingDev
+    m_Metadata:
+      m_Items: []
+  - m_Id: 389163210649600
+    m_Localized: Made with Unity 2022.2.18
+    m_Metadata:
+      m_Items: []
+  - m_Id: 389185029419008
+    m_Localized: Hope this little silly game makes someone happy :)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 389204197388288
+    m_Localized: Thanks for playing!
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

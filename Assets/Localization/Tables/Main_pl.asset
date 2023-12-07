@@ -146,6 +146,35 @@ MonoBehaviour:
     m_Localized: (To nie klon Suika Game serio pls nie pozywajcie mnie)
     m_Metadata:
       m_Items: []
+  - m_Id: 389009200001024
+    m_Localized: Autor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 389011058077696
+    m_Localized: "Tw\xF3rcy"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 389046692884480
+    m_Localized: Assety
+    m_Metadata:
+      m_Items: []
+  - m_Id: 389141786144768
+    m_Localized: Gra autorstwa DingDingDev
+    m_Metadata:
+      m_Items: []
+  - m_Id: 389204197388288
+    m_Localized: "Dzi\u0119ki wielkie za zagranie!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 389185029419008
+    m_Localized: "Mam nadziej\u0119 \u017Ce ta g\u0142upiutka gra poprawi komu\u015B
+      humor :)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 389163210649600
+    m_Localized: "Stworzona z u\u017Cyciem Unity 2022.2.18"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
