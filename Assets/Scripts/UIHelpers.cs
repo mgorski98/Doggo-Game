@@ -9,6 +9,8 @@ public class UIHelpers : MonoBehaviour
     public LocalizedString ExitToMenuText;
 
     public void ShowExitGameDialog() {
+        if (PlayerProgress.Instance.GameOver)
+            return;
         Dialog.Show(ExitGameText.GetLocalizedString(), () => {
 #if !UNITY_EDITOR
             Application.Quit();
@@ -19,6 +21,8 @@ public class UIHelpers : MonoBehaviour
     }
 
     public void ShowExitToMenuDialog() {
+        if (PlayerProgress.Instance.GameOver)
+            return;
         Dialog.Show(ExitToMenuText.GetLocalizedString(), () => SceneManager.LoadScene("MenuScene"));
     }
 }

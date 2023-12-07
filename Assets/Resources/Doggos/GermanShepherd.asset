@@ -32,7 +32,7 @@ MonoBehaviour:
     m_WaitForCompletion: 0
     m_LocalVariables: []
   MergeScore: 900
-  DoggoIcon: {fileID: 0}
+  DoggoIcon: {fileID: 21300000, guid: 6a6b119b8d5573646a7ce9d3df5af49e, type: 3}
   BarkSounds: []
   MergesInto: {fileID: 11400000, guid: 7d297e4e073d7d44b991aa62fb8f8f7d, type: 2}
   references:

@@ -13,6 +13,8 @@ public class DoggoSpawner : SerializedMonoBehaviour
         public int Weight;
     }
 
+    public bool GameOver = false;
+
     public Transform SpawnPoint;
     public (float Min, float Max) XSpawnerBoundaries;
     public DoggoSpawnProbability[] PossibleSpawnedDoggosData;
@@ -24,6 +26,7 @@ public class DoggoSpawner : SerializedMonoBehaviour
     private float SpawnWaitTime = 1f;
     private bool InputEnabled = true;
     private Camera cam;
+    private Quaternion spawnRotation;
 
     private void Awake() {
         var tempList = new List<GameObject>();
@@ -39,14 +42,18 @@ public class DoggoSpawner : SerializedMonoBehaviour
     }
 
     private void Update() {
+        if (GameOver)
+            return;
         if (Input.GetMouseButtonDown(0) && InputEnabled) {
-            Instantiate(CurrentDoggoSelected, SpawnPoint.position, Quaternion.identity);
+            Instantiate(CurrentDoggoSelected, SpawnPoint.position, spawnRotation);
             CurrentDoggoShown.sprite = null;
             WaitForNewDoggo(SpawnWaitTime);
         }
     }
 
     private void LateUpdate() {
+        if (GameOver)
+            return;
         MoveSpawner();
     }
 
@@ -63,6 +70,10 @@ public class DoggoSpawner : SerializedMonoBehaviour
         CurrentDoggoSelected = DoggoGenerator[Random.Range(0, this.DoggoGenerator.Length)];
     }
 
+    private void CheckIfGameLost() {
+
+    }
+
     private void WaitForNewDoggo(float waitTime) {
         InputEnabled = false;
         StartCoroutine(WaitForNewDoggo_Coro(waitTime));
@@ -71,9 +82,11 @@ public class DoggoSpawner : SerializedMonoBehaviour
     private IEnumerator WaitForNewDoggo_Coro(float spawnTime) {
         yield return new WaitForSeconds(spawnTime);
         GenerateNewDoggo();
+        spawnRotation = Quaternion.Euler(Vector3.forward * Random.Range(-360f, 360f));
         var doggoData = CurrentDoggoSelected.GetComponent<DoggoBehaviour>().DoggoData;
         CurrentDoggoShown.sprite = doggoData.DoggoIcon;
         CurrentDoggoShown.transform.localScale = CurrentDoggoSelected.transform.localScale;
+        CurrentDoggoShown.transform.rotation = spawnRotation;
         InputEnabled = true;
     }
 }

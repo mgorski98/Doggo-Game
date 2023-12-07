@@ -36,5 +36,6 @@ public class MergeManager : SerializedMonoBehaviour {
 
         Destroy(obj1);
         Destroy(obj2);
+        PlayerProgress.Instance.IncrementMergedDoggos(data.ID, 2);
     }
 }
