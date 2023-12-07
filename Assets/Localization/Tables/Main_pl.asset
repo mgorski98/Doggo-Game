@@ -86,6 +86,66 @@ MonoBehaviour:
     m_Localized: Tak
     m_Metadata:
       m_Items: []
+  - m_Id: 343517149671424
+    m_Localized: "Po\u0142\u0105czone pieski"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 343601773948928
+    m_Localized: "Wynik ko\u0144cowy"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 343672900956160
+    m_Localized: Koniec!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 343931882450944
+    m_Localized: "Tabela wynik\xF3w"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 344145968115712
+    m_Localized: "Wyjd\u017A"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 344128259764224
+    m_Localized: Restart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 344111763566592
+    m_Localized: "Menu g\u0142\xF3wne"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 344279862882304
+    m_Localized: "Brak wynik\xF3w :("
+    m_Metadata:
+      m_Items: []
+  - m_Id: 344498587447296
+    m_Localized: "Rozpocznij gr\u0119"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 344550034780160
+    m_Localized: "Wyjd\u017A z gry"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 344624223629312
+    m_Localized: "Tabela wynik\xF3w"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 344599422709760
+    m_Localized: Modyfikacje gry
+    m_Metadata:
+      m_Items: []
+  - m_Id: 344787608547328
+    m_Localized: "Tw\xF3rcy"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 344876741701632
+    m_Localized: "Wyb\xF3r j\u0119zyka"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 345353747312640
+    m_Localized: (To nie klon Suika Game serio pls nie pozywajcie mnie)
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -70,10 +70,6 @@ public class DoggoSpawner : SerializedMonoBehaviour
         CurrentDoggoSelected = DoggoGenerator[Random.Range(0, this.DoggoGenerator.Length)];
     }
 
-    private void CheckIfGameLost() {
-
-    }
-
     private void WaitForNewDoggo(float waitTime) {
         InputEnabled = false;
         StartCoroutine(WaitForNewDoggo_Coro(waitTime));

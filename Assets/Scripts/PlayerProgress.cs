@@ -58,18 +58,14 @@ public class PlayerProgress : SerializedMonoBehaviour {
         if (string.IsNullOrWhiteSpace(leaderboards)) {
             updatedLeaderboards = this.Score.ToString();
         } else {
-            var scores = leaderboards.Split(",").Select(long.Parse).ToList();
-            scores.Sort();
-            for (int i = 0; i < scores.Count; ++i) {
-                if (this.Score > scores[i]) {
-                    result = i;
-                    scores[i] = this.Score;
-                    break;
-                }
-            }
-            updatedLeaderboards = string.Join(',', scores.Select(i => i.ToString()));
+            var scores = ParseLeaderboards(leaderboards);
+            scores.Add(this.Score);
+            scores = scores.OrderByDescending(l => l).Take(MAX_LEADERBOARDS_SIZE).ToList();
+            updatedLeaderboards = string.Join(',', scores);
         }
         PlayerPrefs.SetString("LEADERBOARDS", updatedLeaderboards);
         return result;
     }
+
+    public List<long> ParseLeaderboards(string input) => string.IsNullOrWhiteSpace(input) ? new() : input.Split(',').Select(long.Parse).OrderByDescending(l => l).ToList();
 }

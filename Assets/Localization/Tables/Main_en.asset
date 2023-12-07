@@ -86,6 +86,67 @@ MonoBehaviour:
     m_Localized: Yes
     m_Metadata:
       m_Items: []
+  - m_Id: 343517149671424
+    m_Localized: Doggos merged
+    m_Metadata:
+      m_Items: []
+  - m_Id: 343601773948928
+    m_Localized: Final score
+    m_Metadata:
+      m_Items: []
+  - m_Id: 343672900956160
+    m_Localized: Game over!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 343931882450944
+    m_Localized: Leaderboards
+    m_Metadata:
+      m_Items: []
+  - m_Id: 344145968115712
+    m_Localized: Exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 344128259764224
+    m_Localized: Restart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 344111763566592
+    m_Localized: Main menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 344279862882304
+    m_Localized: Nothing to see here :(
+    m_Metadata:
+      m_Items: []
+  - m_Id: 344498587447296
+    m_Localized: Start game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 344550034780160
+    m_Localized: Exit game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 344624223629312
+    m_Localized: Leaderboards
+    m_Metadata:
+      m_Items: []
+  - m_Id: 344599422709760
+    m_Localized: Game modifiers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 344787608547328
+    m_Localized: Credits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 344876741701632
+    m_Localized: Language select
+    m_Metadata:
+      m_Items: []
+  - m_Id: 345353747312640
+    m_Localized: (It's not a Suika Game clone really I am serious please don't sue
+      me)
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

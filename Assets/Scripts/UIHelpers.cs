@@ -11,18 +11,20 @@ public class UIHelpers : MonoBehaviour
     public void ShowExitGameDialog() {
         if (PlayerProgress.Instance.GameOver)
             return;
-        Dialog.Show(ExitGameText.GetLocalizedString(), () => {
-#if !UNITY_EDITOR
-            Application.Quit();
-#else
-            UnityEditor.EditorApplication.isPlaying = false;
-#endif
-        });
+        Dialog.Show(ExitGameText.GetLocalizedString(), this.ExitGame);
     }
 
     public void ShowExitToMenuDialog() {
         if (PlayerProgress.Instance.GameOver)
             return;
         Dialog.Show(ExitToMenuText.GetLocalizedString(), () => SceneManager.LoadScene("MenuScene"));
+    }
+
+    public void ExitGame() {
+#if !UNITY_EDITOR
+            Application.Quit();
+#else
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
     }
 }

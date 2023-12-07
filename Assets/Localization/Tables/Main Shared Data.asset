@@ -83,6 +83,66 @@ MonoBehaviour:
     m_Key: ui-no
     m_Metadata:
       m_Items: []
+  - m_Id: 343517149671424
+    m_Key: ui-doggos-merged
+    m_Metadata:
+      m_Items: []
+  - m_Id: 343601773948928
+    m_Key: ui-final-score
+    m_Metadata:
+      m_Items: []
+  - m_Id: 343672900956160
+    m_Key: ui-game-over
+    m_Metadata:
+      m_Items: []
+  - m_Id: 343931882450944
+    m_Key: ui-leaderboards
+    m_Metadata:
+      m_Items: []
+  - m_Id: 344111763566592
+    m_Key: ui-main-menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 344128259764224
+    m_Key: ui-restart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 344145968115712
+    m_Key: ui-exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 344279862882304
+    m_Key: ui-no-leaderboard-entries
+    m_Metadata:
+      m_Items: []
+  - m_Id: 344498587447296
+    m_Key: menu-start-new-game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 344550034780160
+    m_Key: menu-exit-game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 344599422709760
+    m_Key: menu-game-modifiers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 344624223629312
+    m_Key: menu-leaderboards
+    m_Metadata:
+      m_Items: []
+  - m_Id: 344787608547328
+    m_Key: menu-credits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 344876741701632
+    m_Key: menu-locale-select
+    m_Metadata:
+      m_Items: []
+  - m_Id: 345353747312640
+    m_Key: menu-pls-dont-sue
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
