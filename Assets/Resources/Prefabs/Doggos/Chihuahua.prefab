@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3408976614224157575
+--- !u!1001 &3452004939156705862
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -11,6 +11,18 @@ PrefabInstance:
     - target: {fileID: 1309822206945805860, guid: f019fb1f8e770f344bdbabf0b835f17f, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309822206945805860, guid: f019fb1f8e770f344bdbabf0b835f17f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309822206945805860, guid: f019fb1f8e770f344bdbabf0b835f17f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309822206945805860, guid: f019fb1f8e770f344bdbabf0b835f17f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1309822206945805860, guid: f019fb1f8e770f344bdbabf0b835f17f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -55,10 +67,10 @@ PrefabInstance:
     - target: {fileID: 2136260374348694180, guid: f019fb1f8e770f344bdbabf0b835f17f, type: 3}
       propertyPath: DoggoData
       value: 
-      objectReference: {fileID: 11400000, guid: d0fca5bda37cb5e4dac1d7a463af292a, type: 2}
+      objectReference: {fileID: 11400000, guid: 8f90fa643844eaf4d8d4df3f445c80c9, type: 2}
     - target: {fileID: 3644588722866914071, guid: f019fb1f8e770f344bdbabf0b835f17f, type: 3}
       propertyPath: m_Name
-      value: GermanShepherd
+      value: Chihuahua
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

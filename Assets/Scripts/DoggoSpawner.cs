@@ -73,6 +73,7 @@ public class DoggoSpawner : SerializedMonoBehaviour
         GenerateNewDoggo();
         var doggoData = CurrentDoggoSelected.GetComponent<DoggoBehaviour>().DoggoData;
         CurrentDoggoShown.sprite = doggoData.DoggoIcon;
+        CurrentDoggoShown.transform.localScale = CurrentDoggoSelected.transform.localScale;
         InputEnabled = true;
     }
 }

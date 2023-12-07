@@ -66,6 +66,26 @@ MonoBehaviour:
     m_Localized: Punkty
     m_Metadata:
       m_Items: []
+  - m_Id: 198446899146752
+    m_Localized: "Nast\u0119pstwa"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206227316101120
+    m_Localized: "Czy na pewno chcesz wyj\u015B\u0107? Pieski b\u0119d\u0105 t\u0119skni\u0107!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206372082503680
+    m_Localized: "Czy na pewno chcesz wr\xF3ci\u0107 do menu?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206498561740800
+    m_Localized: Nie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206487534915584
+    m_Localized: Tak
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

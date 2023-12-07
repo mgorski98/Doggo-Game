@@ -63,6 +63,26 @@ MonoBehaviour:
     m_Key: ui-score
     m_Metadata:
       m_Items: []
+  - m_Id: 198446899146752
+    m_Key: ui-progression
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206227316101120
+    m_Key: ui-exit-game-dialog
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206372082503680
+    m_Key: ui-exit-to-menu-dialog
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206487534915584
+    m_Key: ui-yes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206498561740800
+    m_Key: ui-no
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
