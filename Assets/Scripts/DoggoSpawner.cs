@@ -35,6 +35,9 @@ public class DoggoSpawner : SerializedMonoBehaviour
         }
         DoggoGenerator = tempList.ToArray();
         cam = Camera.main;
+
+        if (GameModifiers.Instance.InvisibleDoggoPreview)
+            CurrentDoggoShown.enabled = false;
     }
 
     private void Start() {
