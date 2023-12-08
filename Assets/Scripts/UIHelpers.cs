@@ -27,4 +27,6 @@ public class UIHelpers : MonoBehaviour
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
     }
+
+    public void ToggleRetroMode() => GameModifiers.Instance.RetroMode = !GameModifiers.Instance.RetroMode;
 }

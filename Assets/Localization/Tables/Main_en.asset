@@ -175,6 +175,22 @@ MonoBehaviour:
     m_Localized: Thanks for playing!
     m_Metadata:
       m_Items: []
+  - m_Id: 564124835336192
+    m_Localized: Invisible doggo preview
+    m_Metadata:
+      m_Items: []
+  - m_Id: 564122641715200
+    m_Localized: Retro mode
+    m_Metadata:
+      m_Items: []
+  - m_Id: 564124235550720
+    m_Localized: Bouncy doggos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 564960638488576
+    m_Localized: Modifiers
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

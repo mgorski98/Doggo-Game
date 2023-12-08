@@ -175,6 +175,22 @@ MonoBehaviour:
     m_Localized: "Stworzona z u\u017Cyciem Unity 2022.2.18"
     m_Metadata:
       m_Items: []
+  - m_Id: 564124835336192
+    m_Localized: "Niewidzialny podgl\u0105d pieska"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 564122641715200
+    m_Localized: Tryb retro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 564124235550720
+    m_Localized: "\"Spr\u0119\u017Cyste\" pieski"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 564960638488576
+    m_Localized: Modyfikatory
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

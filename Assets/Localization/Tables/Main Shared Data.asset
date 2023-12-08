@@ -171,6 +171,22 @@ MonoBehaviour:
     m_Key: credits-thanks-part2
     m_Metadata:
       m_Items: []
+  - m_Id: 564122641715200
+    m_Key: game-modifiers-retro-mode
+    m_Metadata:
+      m_Items: []
+  - m_Id: 564124235550720
+    m_Key: game-modifiers-bouncy-doggos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 564124835336192
+    m_Key: game-modifiers-invisible-preview
+    m_Metadata:
+      m_Items: []
+  - m_Id: 564960638488576
+    m_Key: game-modifiers-title
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

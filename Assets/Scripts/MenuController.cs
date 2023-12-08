@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
+using System.Collections;
 
 public class MenuController : SerializedMonoBehaviour
 {
@@ -9,30 +10,24 @@ public class MenuController : SerializedMonoBehaviour
     public GameObject Locales;
     public GameObject Leaderboards;
     public GameObject Credits;
+    public GameObject GameModifiers;
 
     public Sprite[] DoggoHeadImages;
+    public ConstantRotator[] RotatingHeads;
 
-    public RectTransform[] PossibleSpawnPositions;
-    public (int, int) RotatingDoggosCountRange;
-    public (float, float) RotatingDoggosSpeedRange;
+    public (float, float) FlyingDoggoSpawningTimeRanges;
+    public (float, float) FlyingDoggoYPosSpawningRanges;
+    public (float, float) FlyingDoggosSpeedRange;
+    public GameObject FlyingDoggoPrefab;
 
     private void Awake() {
-        if (PossibleSpawnPositions.Length <= 0)
-            return;
-
-        int doggosCount = Random.Range(RotatingDoggosCountRange.Item1, RotatingDoggosCountRange.Item2);
-        var positions = new HashSet<RectTransform>();
-
-        while (positions.Count < doggosCount) {
-            positions.Add(PossibleSpawnPositions[Random.Range(0,PossibleSpawnPositions.Length)]);
+        foreach (var head in RotatingHeads) {
+            head.GetComponent<Image>().sprite = DoggoHeadImages[Random.Range(0,DoggoHeadImages.Length)];
         }
+    }
 
-        foreach (var position in positions) {
-            var img = position.GetComponent<Image>();
-            img.sprite = DoggoHeadImages[Random.Range(0, DoggoHeadImages.Length)];
-            position.GetComponent<ConstantRotator>().SetRotationSpeed(Random.Range(RotatingDoggosSpeedRange.Item1, RotatingDoggosSpeedRange.Item2));
-            position.gameObject.SetActive(true);
-        }
+    private void Start() {
+        //StartCoroutine(SpawnDoggos());
     }
 
     public void ExitGame() {
@@ -51,11 +46,20 @@ public class MenuController : SerializedMonoBehaviour
 
     }
 
+    public void ShowGameModifiersWindow() {
+        Buttons.SetActive(false);
+        Credits.SetActive(false);
+        Leaderboards.SetActive(false);
+        Locales.SetActive(false);
+        GameModifiers.SetActive(true);
+    }
+
     public void ShowCredits() {
         Buttons.SetActive(false);
         Credits.SetActive(true);
         Leaderboards.SetActive(false);
         Locales.SetActive(false);
+        GameModifiers.SetActive(false);
     }
 
     public void ShowMenuAgain() {
@@ -63,5 +67,14 @@ public class MenuController : SerializedMonoBehaviour
         Credits.SetActive(false);
         Leaderboards.SetActive(false);
         Locales.SetActive(false);
+        GameModifiers.SetActive(false);
+    }
+
+    private IEnumerator SpawnDoggos() {
+        while (true) {
+            yield return new WaitForSeconds(Random.Range(FlyingDoggoSpawningTimeRanges.Item1, FlyingDoggoSpawningTimeRanges.Item2));
+
+            float direction = Random.Range(0f, 100f) <= 50f ? -1f : 1f;
+        }
     }
 }
