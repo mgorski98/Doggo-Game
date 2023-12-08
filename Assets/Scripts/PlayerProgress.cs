@@ -60,7 +60,7 @@ public class PlayerProgress : SerializedMonoBehaviour {
         } else {
             var scores = ParseLeaderboards(leaderboards);
             scores.Add(this.Score);
-            scores = scores.OrderByDescending(l => l).Take(MAX_LEADERBOARDS_SIZE).ToList();
+            scores = scores.OrderByDescending(l => l).Take(Mathf.Min(MAX_LEADERBOARDS_SIZE, scores.Count)).ToList();
             updatedLeaderboards = string.Join(',', scores);
             result = scores.IndexOf(this.Score);
         }

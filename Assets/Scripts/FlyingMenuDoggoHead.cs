@@ -13,8 +13,25 @@ public class FlyingMenuDoggoHead : MonoBehaviour {
     public float Speed;
     public float Amplitude;
     public FlyingPatternType PatternType;
+    public float Direction = 1;
+
+    private static readonly FlyingPatternType[] PatternTypes = Enum.GetValues(typeof(FlyingPatternType)).Cast<FlyingPatternType>().ToArray();
+
+    private void Awake() {
+        PatternType = PatternTypes.RandomElement();
+    }
 
     private void Update() {
-        
+        switch (this.PatternType) {
+            case FlyingPatternType.ParametricCircle: {
+                break;
+            }
+            case FlyingPatternType.SineWave: {
+                break;
+            }
+            case FlyingPatternType.Linear: {
+                break;
+            }
+        }
     }
 }

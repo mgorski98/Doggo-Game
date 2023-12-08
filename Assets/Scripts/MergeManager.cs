@@ -33,7 +33,7 @@ public class MergeManager : SerializedMonoBehaviour {
         PlayerProgress.Instance.AddScore(score);
 
         if (data.BarkSounds.Length > 0) {
-            var clip = data.BarkSounds[Random.Range(0, data.BarkSounds.Length)];
+            var clip = data.BarkSounds.RandomElement();
             AudioSource.PlayClipAtPoint(clip, Vector3.zero);
         }
 

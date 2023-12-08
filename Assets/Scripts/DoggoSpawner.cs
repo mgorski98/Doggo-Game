@@ -52,7 +52,7 @@ public class DoggoSpawner : SerializedMonoBehaviour
     private void Update() {
         if (GameOver)
             return;
-        if (Input.GetMouseButtonDown(0) && InputEnabled) {
+        if (IsDoggoDropRequested() && InputEnabled) {
             Instantiate(CurrentDoggoSelected, SpawnPoint.position, spawnRotation);
             CurrentDoggoShown.sprite = null;
             WaitForNewDoggo(SpawnWaitTime);
@@ -66,16 +66,40 @@ public class DoggoSpawner : SerializedMonoBehaviour
     }
 
     private void MoveSpawner() {
-        var pos = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
-        transform.position = new Vector3(
+        transform.position = GetNewSpawnerPosition();
+    }
+
+    private bool IsDoggoDropRequested() {
+#if UNITY_ANDROID
+        if (Input.touchCount > 0) {
+            Touch t = Input.GetTouch(0);
+            return t.phase == TouchPhase.Began;
+        } else return false;
+#else
+        return Input.GetMouseButtonDown(0);
+#endif
+    }
+
+    private Vector3 GetNewSpawnerPosition() {
+        var targetPosition = transform.position;
+#if UNITY_ANDROID
+        if (Input.touchCount > 0) {
+            Touch t = Input.GetTouch(0);
+            targetPosition = cam.ScreenToWorldPoint(t.position);
+        }
+#else
+        var pos = cam.ScreenToWorldPoint(Input.mousePosition.Copy(z: 0f));
+        targetPosition = new Vector3(
             Mathf.Clamp(pos.x, XSpawnerBoundaries.Min, XSpawnerBoundaries.Max),
             transform.position.y,
             transform.position.z
         );
+#endif
+        return targetPosition;
     }
 
     private void GenerateNewDoggo() {
-        CurrentDoggoSelected = DoggoGenerator[Random.Range(0, this.DoggoGenerator.Length)];
+        CurrentDoggoSelected = DoggoGenerator.RandomElement();
     }
 
     private void WaitForNewDoggo(float waitTime) {

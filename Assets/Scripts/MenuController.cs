@@ -24,16 +24,21 @@ public class MenuController : SerializedMonoBehaviour
     public (float, float) ShootingStrengthRanges;
     public (float, float) ShootingAngleRanges;
     public (float, float) ShootingTimeRanges;
+    public float YViewportOffset = 0.2f;
+
+    private Camera cam;
 
     private void Awake() {
         foreach (var head in RotatingHeads) {
-            head.GetComponent<Image>().sprite = DoggoHeadImages[Random.Range(0,DoggoHeadImages.Length)];
+            head.GetComponent<Image>().sprite = DoggoHeadImages.RandomElement();
         }
+
+        cam = Camera.main;
     }
 
     private void Start() {
         //StartCoroutine(SpawnFlyingDoggos());
-        //StartCoroutine(StartLaunchingDoggosInTheAir());
+        StartCoroutine(StartLaunchingDoggosInTheAir());
     }
 
     public void ExitGame() {
@@ -85,6 +90,8 @@ public class MenuController : SerializedMonoBehaviour
             float speed = Random.Range(FlyingDoggosSpeedRange.Item1, FlyingDoggosSpeedRange.Item2);
             var obj = Instantiate(FlyingDoggoPrefab, spawnPosition, Quaternion.identity);
             var comp = obj.GetComponent<FlyingMenuDoggoHead>();
+            comp.Speed = speed;
+            comp.Direction = direction;
         }
     }
 
@@ -92,11 +99,20 @@ public class MenuController : SerializedMonoBehaviour
         while (true) {
             yield return new WaitForSeconds(Random.Range(ShootingTimeRanges.Item1, ShootingTimeRanges.Item2));
 
-            Vector2 shootingDirection = new Vector2(Mathf.Clamp(Random.insideUnitCircle.x, ShootingAngleRanges.Item1, ShootingAngleRanges.Item2), Mathf.Abs(Random.insideUnitCircle.y));
-            Vector2 spawnPosition = new();
+            var positionOutsideViewport = new Vector2(0, YViewportOffset);
+            var pos = cam.ViewportToWorldPoint(positionOutsideViewport);
+
+            Vector2 shootingDirection = new Vector2(
+                Random.Range(ShootingAngleRanges.Item1, ShootingAngleRanges.Item2),
+                1f
+            ).normalized;
             float shootingStrength = Random.Range(ShootingStrengthRanges.Item1, ShootingStrengthRanges.Item2);
-            var obj = Instantiate(ShootingDoggoPrefab, spawnPosition, Quaternion.identity);
+            var obj = Instantiate(ShootingDoggoPrefab, pos.Copy(x: 0f, z: 0f), Quaternion.identity);
             obj.GetComponent<Rigidbody2D>().AddForce(shootingDirection * shootingStrength, ForceMode2D.Impulse);
+            obj.GetComponentInChildren<SpriteRenderer>().sprite = DoggoHeadImages.RandomElement();
+            obj.GetComponent<ConstantRotator>().RotationSpeed = shootingStrength * 4 * -Mathf.Sign(shootingDirection.x);
+
+            Destroy(obj, 6.5f);
         } 
     }
 }

@@ -163,7 +163,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -266, y: -165}
+  m_AnchoredPosition: {x: -183.8, y: -133.7}
   m_SizeDelta: {x: 160, y: 128}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &138144513
@@ -2878,7 +2878,7 @@ Canvas:
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 2060608430}
-  m_PlaneDistance: 100
+  m_PlaneDistance: 1
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -3199,7 +3199,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -248, y: 0}
+  m_AnchoredPosition: {x: -185.4, y: 0}
   m_SizeDelta: {x: 160, y: 128}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &993290472
@@ -5321,10 +5321,10 @@ MonoBehaviour:
         mscorlib
     - Name: Item1
       Entry: 4
-      Data: 0
+      Data: 13
     - Name: Item2
       Entry: 4
-      Data: 0
+      Data: 15
     - Name: 
       Entry: 8
       Data: 
@@ -5334,10 +5334,10 @@ MonoBehaviour:
         mscorlib
     - Name: Item1
       Entry: 4
-      Data: 0
+      Data: -0.75
     - Name: Item2
       Entry: 4
-      Data: 0
+      Data: 0.75
     - Name: 
       Entry: 8
       Data: 
@@ -5347,10 +5347,10 @@ MonoBehaviour:
         mscorlib
     - Name: Item1
       Entry: 4
-      Data: 0
+      Data: 0.9
     - Name: Item2
       Entry: 4
-      Data: 0
+      Data: 1.2
     - Name: 
       Entry: 8
       Data: 
@@ -5375,7 +5375,8 @@ MonoBehaviour:
   - {fileID: 237897525}
   - {fileID: 1057203679}
   FlyingDoggoPrefab: {fileID: 0}
-  ShootingDoggoPrefab: {fileID: 0}
+  ShootingDoggoPrefab: {fileID: 4476849062571479736, guid: 02204abe898235643971dbbe48ec7b1b, type: 3}
+  YViewportOffset: -0.2
 --- !u!1 &1370860763
 GameObject:
   m_ObjectHideFlags: 0
@@ -5416,7 +5417,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 238, y: -99}
+  m_AnchoredPosition: {x: 223.3, y: -121.5}
   m_SizeDelta: {x: 160, y: 128}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1370860765
@@ -5691,7 +5692,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 75, y: -164}
+  m_AnchoredPosition: {x: 21.2, y: -50.5}
   m_SizeDelta: {x: 160, y: 128}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1382118991
