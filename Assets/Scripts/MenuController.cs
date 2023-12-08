@@ -28,6 +28,8 @@ public class MenuController : SerializedMonoBehaviour
 
     private Camera cam;
 
+    public Transform DoggoHeadsParent;
+
     private void Awake() {
         foreach (var head in RotatingHeads) {
             head.GetComponent<Image>().sprite = DoggoHeadImages.RandomElement();
@@ -107,7 +109,7 @@ public class MenuController : SerializedMonoBehaviour
                 1f
             ).normalized;
             float shootingStrength = Random.Range(ShootingStrengthRanges.Item1, ShootingStrengthRanges.Item2);
-            var obj = Instantiate(ShootingDoggoPrefab, pos.Copy(x: 0f, z: 0f), Quaternion.identity);
+            var obj = Instantiate(ShootingDoggoPrefab, pos.Copy(x: 0f, z: 0f), Quaternion.identity, DoggoHeadsParent);
             obj.GetComponent<Rigidbody2D>().AddForce(shootingDirection * shootingStrength, ForceMode2D.Impulse);
             obj.GetComponentInChildren<SpriteRenderer>().sprite = DoggoHeadImages.RandomElement();
             obj.GetComponent<ConstantRotator>().RotationSpeed = shootingStrength * 4 * -Mathf.Sign(shootingDirection.x);

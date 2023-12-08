@@ -12,6 +12,10 @@ public class DoggoBehaviour : MonoBehaviour
 
     private Rigidbody2D Rbody;
 
+    [SerializeField]
+    [Tooltip("Necessary value for clamping the magnitude, since sometimes physics go brrrr and doggos fly into space")]
+    private float MaxVelocityMagnitude = 20f;
+
     private void Awake() {
         DoggoSpriteRenderer = GetComponent<SpriteRenderer>();
         DoggoSpriteRenderer.sprite = DoggoData.DoggoIcon;
@@ -58,5 +62,9 @@ public class DoggoBehaviour : MonoBehaviour
                 Rbody.sharedMaterial = GameModifiers.Instance.BouncyMat;
             }
         }
+    }
+
+    private void FixedUpdate() {
+        Rbody.velocity = Vector2.ClampMagnitude(Rbody.velocity, MaxVelocityMagnitude);
     }
 }

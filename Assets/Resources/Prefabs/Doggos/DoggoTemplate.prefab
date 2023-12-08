@@ -164,3 +164,4 @@ MonoBehaviour:
   HasCollidedAlready: 0
   DoggoData: {fileID: 0}
   GraceTime: 1.69
+  MaxVelocityMagnitude: 25
