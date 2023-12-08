@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConstantRotator : MonoBehaviour
+public class DoggoConstantRotator : MonoBehaviour
 {
     [SerializeField]
     private float RotationSpeed = 1f;

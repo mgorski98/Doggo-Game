@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
 
-public class ConfirmationDialog : MonoBehaviour
+public class DoggoConfirmationDialog : MonoBehaviour
 {
     public Button ConfirmationButton;
     public TextMeshProUGUI DialogContentText;

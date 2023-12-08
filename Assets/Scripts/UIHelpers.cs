@@ -4,7 +4,7 @@ using UnityEngine.Localization;
 
 public class UIHelpers : MonoBehaviour
 {
-    public ConfirmationDialog Dialog;
+    public DoggoConfirmationDialog Dialog;
     public LocalizedString ExitGameText;
     public LocalizedString ExitToMenuText;
 
