@@ -24,6 +24,7 @@ public class DoggoSpawner : SerializedMonoBehaviour
     private GameObject CurrentDoggoSelected;
     [OdinSerialize]
     private float SpawnWaitTime = 1f;
+    [OdinSerialize]
     private bool InputEnabled = true;
     private Camera cam;
     private Quaternion spawnRotation;
@@ -92,4 +93,7 @@ public class DoggoSpawner : SerializedMonoBehaviour
         CurrentDoggoShown.transform.rotation = spawnRotation;
         InputEnabled = true;
     }
+
+    public void EnableInput() => InputEnabled = true;
+    public void DisableInput() => InputEnabled = false;
 }
