@@ -10,9 +10,12 @@ public class DoggoBehaviour : MonoBehaviour
     private float GraceTime = 0.75f;
     private bool EligibleForGameLoss = false;
 
+    private Rigidbody2D Rbody;
+
     private void Awake() {
         DoggoSpriteRenderer = GetComponent<SpriteRenderer>();
         DoggoSpriteRenderer.sprite = DoggoData.DoggoIcon;
+        Rbody = GetComponent<Rigidbody2D>();
 
         Invoke(nameof(ReenableGameLoss), GraceTime);
     }
@@ -45,5 +48,15 @@ public class DoggoBehaviour : MonoBehaviour
 
     private void ReenableGameLoss() {
         EligibleForGameLoss = true;
+    }
+
+    private void Update() {
+        if (GameModifiers.Instance == null)
+            return;
+        if (GameModifiers.Instance.BouncyDoggos) {
+            if (Rbody.sharedMaterial != GameModifiers.Instance.BouncyMat) {
+                Rbody.sharedMaterial = GameModifiers.Instance.BouncyMat;
+            }
+        }
     }
 }

@@ -8,4 +8,4 @@ PhysicsMaterial2D:
   m_PrefabAsset: {fileID: 0}
   m_Name: BouncyDoggoMaterial
   friction: 0.25
-  bounciness: 0.63
+  bounciness: 0.8

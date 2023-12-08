@@ -187,6 +187,10 @@ MonoBehaviour:
     m_Key: game-modifiers-title
     m_Metadata:
       m_Items: []
+  - m_Id: 573472424808448
+    m_Key: game-modifiers-timed-mode
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

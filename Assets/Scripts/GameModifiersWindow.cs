@@ -8,6 +8,7 @@ public class GameModifiersWindow : MonoBehaviour
     public Toggle RetroMode;
     public Toggle BouncyDogs;
     public Toggle InvisiblePreview;
+    public Toggle TimedMode;
 
     private void Start()
     {
@@ -19,6 +20,7 @@ public class GameModifiersWindow : MonoBehaviour
         RetroMode.isOn = Modifiers.RetroMode;
         InvisiblePreview.isOn = Modifiers.InvisibleDoggoPreview;
         BouncyDogs.isOn = Modifiers.BouncyDoggos;
+        TimedMode.isOn = Modifiers.TimedMode;
 
         RetroMode.onValueChanged.AddListener(newValue => { 
             Modifiers.RetroMode = newValue;
@@ -30,6 +32,10 @@ public class GameModifiersWindow : MonoBehaviour
         });
         InvisiblePreview.onValueChanged.AddListener(newValue => {
             Modifiers.InvisibleDoggoPreview = newValue;
+            Modifiers.SaveModifiers();
+        });
+        TimedMode.onValueChanged.AddListener(newValue => {
+            Modifiers.TimedMode = newValue;
             Modifiers.SaveModifiers();
         });
     }

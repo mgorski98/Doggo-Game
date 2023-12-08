@@ -8,6 +8,9 @@ public class MergeManager : SerializedMonoBehaviour {
     public Dictionary<string, GameObject> DoggoPrefabs = new();
     public static MergeManager Instance { get; private set; }
 
+    [SerializeField]
+    private TimedModeManager TimedModeMgr;
+
     private void Awake() {
         Instance = this;
     }
@@ -37,5 +40,7 @@ public class MergeManager : SerializedMonoBehaviour {
         Destroy(obj1);
         Destroy(obj2);
         PlayerProgress.Instance.IncrementMergedDoggos(data.ID, 2);
+        if (GameModifiers.Instance.TimedMode && TimedModeMgr != null)
+            TimedModeMgr.IncrementTime();
     }
 }
