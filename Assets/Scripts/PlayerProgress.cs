@@ -62,6 +62,7 @@ public class PlayerProgress : SerializedMonoBehaviour {
             scores.Add(this.Score);
             scores = scores.OrderByDescending(l => l).Take(MAX_LEADERBOARDS_SIZE).ToList();
             updatedLeaderboards = string.Join(',', scores);
+            result = scores.IndexOf(this.Score);
         }
         PlayerPrefs.SetString("LEADERBOARDS", updatedLeaderboards);
         return result;

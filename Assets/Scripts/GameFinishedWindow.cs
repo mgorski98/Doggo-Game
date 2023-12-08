@@ -25,7 +25,7 @@ public class GameFinishedWindow : MonoBehaviour {
         var score = PlayerProgress.Instance.Score;
 
         MergedDoggosText.text = doggosMerged.Sum(kvp => kvp.Value).ToString();
-        ScoreText.text = score.ToString() + (leaderboardIndex < FirstPlaceColors.Length ? $" <color=#{ColorUtility.ToHtmlStringRGB(FirstPlaceColors[leaderboardIndex])}>(#{leaderboardIndex+1} place!)</color>" : "");
+        ScoreText.text = score.ToString() + ((leaderboardIndex < FirstPlaceColors.Length && leaderboardIndex >= 0) ? $" <color=#{ColorUtility.ToHtmlStringRGB(FirstPlaceColors[leaderboardIndex])}>(#{leaderboardIndex+1} place!)</color>" : "");
         gameObject.SetActive(true);
         
         StartCoroutine(Show_Coro());
