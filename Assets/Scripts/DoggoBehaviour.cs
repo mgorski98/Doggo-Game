@@ -6,7 +6,7 @@ public class DoggoBehaviour : MonoBehaviour
     public DoggoData DoggoData;
     private SpriteRenderer DoggoSpriteRenderer;
     [SerializeField]
-    [Range(0f, 1f)]
+    [Range(0f, 5f)]
     private float GraceTime = 0.75f;
     private bool EligibleForGameLoss = false;
 

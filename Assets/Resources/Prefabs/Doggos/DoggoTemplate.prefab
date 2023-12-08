@@ -163,4 +163,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HasCollidedAlready: 0
   DoggoData: {fileID: 0}
-  GraceTime: 1
+  GraceTime: 1.69

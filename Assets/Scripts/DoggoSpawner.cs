@@ -27,6 +27,8 @@ public class DoggoSpawner : SerializedMonoBehaviour
     private bool InputEnabled = true;
     private Camera cam;
     private Quaternion spawnRotation;
+    [OdinSerialize]
+    private GameObject DropPositionIndicator;
 
     private void Awake() {
         var tempList = new List<GameObject>();
@@ -36,8 +38,10 @@ public class DoggoSpawner : SerializedMonoBehaviour
         DoggoGenerator = tempList.ToArray();
         cam = Camera.main;
 
-        if (GameModifiers.Instance.InvisibleDoggoPreview)
+        if (GameModifiers.Instance.InvisibleDoggoPreview) {
             CurrentDoggoShown.enabled = false;
+            DropPositionIndicator.SetActive(true);
+        }
     }
 
     private void Start() {
