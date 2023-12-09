@@ -191,6 +191,14 @@ MonoBehaviour:
     m_Key: game-modifiers-timed-mode
     m_Metadata:
       m_Items: []
+  - m_Id: 976016439652352
+    m_Key: ui-current-version-short
+    m_Metadata:
+      m_Items: []
+  - m_Id: 976323286544384
+    m_Key: ui-current-version-long
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

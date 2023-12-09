@@ -3,6 +3,8 @@ using UnityEngine.UI;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using System.Collections;
+using UnityEngine.Localization;
+using TMPro;
 
 public class MenuController : SerializedMonoBehaviour
 {
@@ -30,12 +32,18 @@ public class MenuController : SerializedMonoBehaviour
 
     public Transform DoggoHeadsParent;
 
+    public LocalizedString[] VersionLocalization;
+    public TextMeshProUGUI[] VersionTextComponents;
+
     private void Awake() {
         foreach (var head in RotatingHeads) {
             head.GetComponent<Image>().sprite = DoggoHeadImages.RandomElement();
         }
 
         cam = Camera.main;
+        for (int i = 0; i < VersionLocalization.Length; ++i) {
+            VersionTextComponents[i].text = string.Format(VersionLocalization[i].GetLocalizedString(), Application.version);
+        }
     }
 
     private void Start() {
