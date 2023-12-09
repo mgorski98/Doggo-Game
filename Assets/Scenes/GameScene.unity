@@ -1275,6 +1275,19 @@ MonoBehaviour:
     m_WaitForCompletion: 0
     m_LocalVariables: []
   Mixer: {fileID: 0}
+  SoundOn:
+    _value: 0
+    onValueChanged:
+      m_PersistentCalls:
+        m_Calls: []
+  MusicOn:
+    _value: 0
+    onValueChanged:
+      m_PersistentCalls:
+        m_Calls: []
+  MusicPlayer: {fileID: 0}
+  SoundToggleButton: {fileID: 0}
+  MusicToggleButton: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -1546,19 +1559,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 401786366}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 366930167}
-        m_TargetAssemblyTypeName: UIHelpers, Assembly-CSharp
-        m_MethodName: ToggleRetroMode
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &401786366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2159,19 +2160,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 474036682}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 366930167}
-        m_TargetAssemblyTypeName: UIHelpers, Assembly-CSharp
-        m_MethodName: ToggleRetroMode
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &474036682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3142,7 +3131,11 @@ MonoBehaviour:
   ScoreText: {fileID: 635512636}
   GameTimeText: {fileID: 0}
   Spawner: {fileID: 1073008034}
-  Score: 0
+  Score:
+    _value: 0
+    onValueChanged:
+      m_PersistentCalls:
+        m_Calls: []
   GameOverWindow: {fileID: 1061524371}
   GameOver: 0
 --- !u!114 &634432911
@@ -3951,6 +3944,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6746197758fcc64797d2f3cf53567ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
   BouncyDoggos: 0
   RetroMode: 0
   InvisibleDoggoPreview: 0

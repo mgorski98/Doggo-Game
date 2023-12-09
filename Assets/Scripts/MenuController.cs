@@ -35,6 +35,9 @@ public class MenuController : SerializedMonoBehaviour
     public LocalizedString[] VersionLocalization;
     public TextMeshProUGUI[] VersionTextComponents;
 
+    public ToggleButton SoundToggleButton;
+    public ToggleButton MusicToggleButton;
+
     private void Awake() {
         foreach (var head in RotatingHeads) {
             head.GetComponent<Image>().sprite = DoggoHeadImages.RandomElement();
@@ -44,6 +47,12 @@ public class MenuController : SerializedMonoBehaviour
         for (int i = 0; i < VersionLocalization.Length; ++i) {
             VersionTextComponents[i].text = string.Format(VersionLocalization[i].GetLocalizedString(), Application.version);
         }
+
+        UpdateAudioButtons();
+    }
+
+    private void UpdateAudioButtons() {
+
     }
 
     private void Start() {

@@ -16,7 +16,7 @@ public class MusicPlayer : SerializedMonoBehaviour
     private Coroutine FadeOutCoro;
 
     [Header("CONFIG")]
-    public float FadeInDurationSeconds = 2f;
+    public float FadeInOutDurationSeconds = 2f;
     [Range(0.9f, 1f)]
     public float ProgressFadeOutThreshold = 0.9f;
     public float MusicVolume;
@@ -42,7 +42,7 @@ public class MusicPlayer : SerializedMonoBehaviour
             var progress = ASource.time / ASource.clip.length;
             if (progress >= ProgressFadeOutThreshold && FadeOutCoro == null) {
                 float timeLeft = ASource.clip.length - ASource.time;
-                FadeOutCoro = StartCoroutine(FadeOutCurrentSound(timeLeft));
+                FadeOutCoro = StartCoroutine(FadeOutCurrentSound(Mathf.Min(timeLeft, FadeInOutDurationSeconds)));
             }
         }
 
@@ -56,7 +56,7 @@ public class MusicPlayer : SerializedMonoBehaviour
         ASource.clip = MusicClips[CurrentIndex];
         ASource.Play();
         if (fadeIn)
-            StartCoroutine(FadeInCurrentSound(FadeInDurationSeconds));
+            StartCoroutine(FadeInCurrentSound(FadeInOutDurationSeconds));
     }
 
     private IEnumerator FadeOutCurrentSound(float timeLeft) {

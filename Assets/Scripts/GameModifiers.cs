@@ -3,9 +3,7 @@ using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using System;
 
-public class GameModifiers : MonoBehaviour {
-    public static GameModifiers Instance { get; private set; } = null;
-
+public class GameModifiers : SingletonBehaviour<GameModifiers> {
     public bool BouncyDoggos = false;
     public bool RetroMode = false;
     public bool InvisibleDoggoPreview = false;
@@ -19,12 +17,8 @@ public class GameModifiers : MonoBehaviour {
     private ColorAdjustments ColorAdjustEffect;
     private LensDistortion LensDistortionEffect;
 
-    private void Awake() {
-        if (Instance != null && Instance != this) {
-            Destroy(this.gameObject);
-            return;
-        }
-        Instance = this;
+    protected override void Awake() {
+        base.Awake();
         PostProcessProfile.TryGet(out GrainEffect);
         PostProcessProfile.TryGet(out ChromAberrationEffect);
         PostProcessProfile.TryGet(out ColorAdjustEffect);
@@ -32,11 +26,6 @@ public class GameModifiers : MonoBehaviour {
         FetchModifiers();
 
         DontDestroyOnLoad(this.gameObject);
-    }
-
-    private void OnDestroy() {
-        if (Instance == this)
-            Instance = null;
     }
 
     private void Update() {

@@ -73,12 +73,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 9efb82d91ad0e4fdfbf6a09635f9d78d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0dce5305b379ce646a82a300d8a3f1e4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -4938,7 +4938,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4476849062571479736}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.246, y: 7.687, z: 0}
+  m_LocalPosition: {x: 3.011, y: 8.033, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5098,7 +5098,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.49065423
+        value: 0.4570423
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -5147,7 +5147,7 @@ TrailRenderer:
       m_ColorSpace: 0
       m_NumColorKeys: 7
       m_NumAlphaKeys: 2
-    numCornerVertices: 16
+    numCornerVertices: 4
     numCapVertices: 8
     alignment: 0
     textureMode: 0

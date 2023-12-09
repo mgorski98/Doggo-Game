@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
 
-public class PlayerProgress : SerializedMonoBehaviour {
+public class PlayerProgress : SingletonBehaviour<PlayerProgress> {
     public TextMeshProUGUI ScoreText;
     public TextMeshProUGUI GameTimeText;
 
     public DoggoSpawner Spawner;
 
-    public long Score;
+    public ObservableValue<long> Score = new(0L);
     public Dictionary<string, int> MergedDoggos = new();
 
     public GameFinishedWindow GameOverWindow;
@@ -19,21 +19,10 @@ public class PlayerProgress : SerializedMonoBehaviour {
 
     public bool GameOver = false;
 
-    public static PlayerProgress Instance { get; private set; } = null;
+    protected override void Awake() {
+        base.Awake();
 
-    private void Awake() {
-        Instance = this;
-    }
-
-    private void OnDestroy() {
-        if (Instance == this) {
-            Instance = null;
-        }
-    }
-
-    public void AddScore(int score) {
-        this.Score += score;
-        ScoreText.text = this.Score.ToString();
+        this.Score.onValueChanged.AddListener(p => ScoreText.text = p.Item2.ToString());
     }
 
     public void IncrementMergedDoggos(string doggoId, int incrBy) {

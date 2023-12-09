@@ -3,22 +3,12 @@ using Sirenix.Serialization;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MergeManager : SerializedMonoBehaviour {
+public class MergeManager : SingletonBehaviour<MergeManager> {
     [OdinSerialize]
     public Dictionary<string, GameObject> DoggoPrefabs = new();
-    public static MergeManager Instance { get; private set; }
 
     [SerializeField]
     private TimedModeManager TimedModeMgr;
-
-    private void Awake() {
-        Instance = this;
-    }
-
-    private void OnDestroy() {
-        if (Instance == this)
-            Instance = null;
-    }
 
     public void QueueMerge(GameObject obj1, GameObject obj2, DoggoData data) {
         if (!data.IsBiggestDoggo) {
@@ -30,7 +20,7 @@ public class MergeManager : SerializedMonoBehaviour {
         }
 
         int score = data.MergeScore;
-        PlayerProgress.Instance.AddScore(score);
+        PlayerProgress.Instance.Score.Value += score;
 
         if (data.BarkSounds.Length > 0) {
             var clip = data.BarkSounds.RandomElement();
