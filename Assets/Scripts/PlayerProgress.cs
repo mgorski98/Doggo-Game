@@ -5,8 +5,7 @@ using System.Linq;
 using Sirenix.OdinInspector;
 
 public class PlayerProgress : SingletonBehaviour<PlayerProgress> {
-    public TextMeshProUGUI ScoreText;
-    public TextMeshProUGUI GameTimeText;
+    public ScoreCountingLabel ScoreText;
 
     public DoggoSpawner Spawner;
 
@@ -22,7 +21,7 @@ public class PlayerProgress : SingletonBehaviour<PlayerProgress> {
     protected override void Awake() {
         base.Awake();
 
-        this.Score.onValueChanged.AddListener(p => ScoreText.text = p.Item2.ToString());
+        this.Score.onValueChanged.AddListener(p => ScoreText.StartCounting(p.Item2));
     }
 
     public void IncrementMergedDoggos(string doggoId, int incrBy) {

@@ -9,6 +9,10 @@ public class MergeManager : SingletonBehaviour<MergeManager> {
 
     [SerializeField]
     private TimedModeManager TimedModeMgr;
+    [SerializeField]
+    private AudioClip[] PopSounds;
+    [SerializeField]
+    private AudioSource ASource;
 
     public void QueueMerge(GameObject obj1, GameObject obj2, DoggoData data) {
         if (!data.IsBiggestDoggo) {
@@ -25,6 +29,10 @@ public class MergeManager : SingletonBehaviour<MergeManager> {
         if (data.BarkSounds.Length > 0) {
             var clip = data.BarkSounds.RandomElement();
             AudioSource.PlayClipAtPoint(clip, Vector3.zero);
+        }
+
+        if (!PopSounds.IsEmpty()) {
+            ASource.PlayOneShot(PopSounds.RandomElement());
         }
 
         Destroy(obj1);

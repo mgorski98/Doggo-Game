@@ -73,7 +73,11 @@ public class MenuController : SerializedMonoBehaviour
     }
 
     public void ShowLocaleSelect() {
-
+        Buttons.SetActive(false);
+        Credits.SetActive(false);
+        Leaderboards.SetActive(false);
+        Locales.SetActive(true);
+        GameModifiers.SetActive(false);
     }
 
     public void ShowGameModifiersWindow() {

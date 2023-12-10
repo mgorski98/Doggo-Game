@@ -203,6 +203,14 @@ MonoBehaviour:
     m_Localized: Current app version:<br><b>{0}</b>
     m_Metadata:
       m_Items: []
+  - m_Id: 1071544544407552
+    m_Localized: Select language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1071772446109696
+    m_Localized: Confirm
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
