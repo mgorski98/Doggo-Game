@@ -57,6 +57,12 @@ public class DoggoBehaviour : MonoBehaviour, IPoolable
         }
     }
 
+    private void OnTriggerExit2D(Collider2D collision) {
+        if (collision.gameObject.CompareTag("GameOverLine")) {
+            EligibleForGameLoss = true;
+        }
+    }
+
     private void Update() {
         if (GameModifiers.Instance == null)
             return;
