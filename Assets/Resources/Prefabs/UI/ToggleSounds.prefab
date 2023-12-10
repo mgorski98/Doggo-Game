@@ -138,8 +138,8 @@ MonoBehaviour:
         m_CallState: 2
   ChangeSprite: 1
   ChangeTargetGraphic: {fileID: 997168466457371629}
-  ToggledStateSprite: {fileID: 21300000, guid: 96918790ce247b841a91dd2320efeca6, type: 3}
-  UntoggledStateSprite: {fileID: 21300000, guid: ad553a079d6562d42acaa663424c01f8, type: 3}
+  ToggledStateSprite: {fileID: 21300000, guid: 02078efbf2e1f2b4cb88934a5a411040, type: 3}
+  UntoggledStateSprite: {fileID: 21300000, guid: 30af3ed96436aba4eb4e3b541ea5641b, type: 3}
 --- !u!114 &6760654874977079590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,7 +250,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 96918790ce247b841a91dd2320efeca6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 02078efbf2e1f2b4cb88934a5a411040, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
