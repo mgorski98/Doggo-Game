@@ -6,9 +6,6 @@ public class DoggoBehaviour : MonoBehaviour, IPoolable
     public DoggoData DoggoData;
     private SpriteRenderer DoggoSpriteRenderer;
     [SerializeField]
-    [Range(0f, 5f)]
-    private float GraceTime = 0.75f;
-    [SerializeField]
     private bool EligibleForGameLoss = false;
 
     private Rigidbody2D Rbody;
@@ -39,11 +36,18 @@ public class DoggoBehaviour : MonoBehaviour, IPoolable
             HasCollidedAlready = true;
             MergeManager.Instance.QueueMerge(gameObject, collision.gameObject, otherDoggoData);
         }
+
+        if (collision.gameObject.CompareTag("Doggo")) {
+            EligibleForGameLoss = true;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.CompareTag("GameOverLine") && EligibleForGameLoss && !PlayerProgress.Instance.GameOver) {
             PlayerProgress.Instance.HandleGameOver();
+        }
+        if (collision.gameObject.CompareTag("Box")) {
+            EligibleForGameLoss = true;
         }
     }
 
@@ -51,10 +55,6 @@ public class DoggoBehaviour : MonoBehaviour, IPoolable
         if (collision.gameObject.CompareTag("GameOverLine") && EligibleForGameLoss && !PlayerProgress.Instance.GameOver) {
             PlayerProgress.Instance.HandleGameOver();
         }
-    }
-
-    private void ReenableGameLoss() {
-        EligibleForGameLoss = true;
     }
 
     private void Update() {
@@ -74,11 +74,6 @@ public class DoggoBehaviour : MonoBehaviour, IPoolable
     private void OnEnable() {
         EligibleForGameLoss = false;
         HasCollidedAlready = false;
-        Invoke(nameof(ReenableGameLoss), GraceTime);
-    }
-
-    private void OnDisable() {
-        EligibleForGameLoss = false;
     }
 
     public void Reset() {

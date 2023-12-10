@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Doggo
   - GameOverLine
+  - Box
   layers:
   - Default
   - TransparentFX
