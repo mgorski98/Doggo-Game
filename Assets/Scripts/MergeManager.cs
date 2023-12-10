@@ -17,10 +17,11 @@ public class MergeManager : SingletonBehaviour<MergeManager> {
     public void QueueMerge(GameObject obj1, GameObject obj2, DoggoData data) {
         if (!data.IsBiggestDoggo) {
             //spawn new one
-            var prefab = DoggoPrefabs[data.MergesInto.ID];
+            var prefab = UnityObjectPool.Instance.Get(data.MergesInto.ID);
             var pos = (obj1.transform.position + obj2.transform.position) / 2f;
             var rot = (obj1.transform.eulerAngles + obj2.transform.eulerAngles) / 2f;
-            Instantiate(prefab, pos, Quaternion.Euler(rot));
+            prefab.transform.SetPositionAndRotation(pos, Quaternion.Euler(rot));
+            prefab.SetActive(true);
         }
 
         int score = data.MergeScore;
@@ -35,8 +36,8 @@ public class MergeManager : SingletonBehaviour<MergeManager> {
             ASource.PlayOneShot(PopSounds.RandomElement());
         }
 
-        Destroy(obj1);
-        Destroy(obj2);
+        UnityObjectPool.Instance.Reclaim(data.ID, obj1);
+        UnityObjectPool.Instance.Reclaim(data.ID, obj2);
         PlayerProgress.Instance.IncrementMergedDoggos(data.ID, 2);
         if (GameModifiers.Instance.TimedMode && TimedModeMgr != null)
             TimedModeMgr.IncrementTime();

@@ -21,7 +21,7 @@ public class DoggoSpawner : SerializedMonoBehaviour
     private GameObject[] DoggoGenerator;
     [OdinSerialize]
     private SpriteRenderer CurrentDoggoShown;
-    private GameObject CurrentDoggoSelected;
+    private DoggoBehaviour CurrentDoggoSelected;
     [OdinSerialize]
     private float SpawnWaitTime = 1f;
     [OdinSerialize]
@@ -53,7 +53,9 @@ public class DoggoSpawner : SerializedMonoBehaviour
         if (GameOver)
             return;
         if (IsDoggoDropRequested() && InputEnabled) {
-            Instantiate(CurrentDoggoSelected, SpawnPoint.position, spawnRotation);
+            var obj = UnityObjectPool.Instance.Get(CurrentDoggoSelected.DoggoData.ID);
+            obj.transform.SetPositionAndRotation(SpawnPoint.position, spawnRotation);
+            obj.SetActive(true);
             CurrentDoggoShown.sprite = null;
             WaitForNewDoggo(SpawnWaitTime);
         }
@@ -99,7 +101,7 @@ public class DoggoSpawner : SerializedMonoBehaviour
     }
 
     private void GenerateNewDoggo() {
-        CurrentDoggoSelected = DoggoGenerator.RandomElement();
+        CurrentDoggoSelected = DoggoGenerator.RandomElement().GetComponent<DoggoBehaviour>();
     }
 
     private void WaitForNewDoggo(float waitTime) {

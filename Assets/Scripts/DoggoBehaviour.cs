@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DoggoBehaviour : MonoBehaviour
+public class DoggoBehaviour : MonoBehaviour, IPoolable
 {
     public bool HasCollidedAlready = false;
     public DoggoData DoggoData;
@@ -8,6 +8,7 @@ public class DoggoBehaviour : MonoBehaviour
     [SerializeField]
     [Range(0f, 5f)]
     private float GraceTime = 0.75f;
+    [SerializeField]
     private bool EligibleForGameLoss = false;
 
     private Rigidbody2D Rbody;
@@ -20,8 +21,6 @@ public class DoggoBehaviour : MonoBehaviour
         DoggoSpriteRenderer = GetComponent<SpriteRenderer>();
         DoggoSpriteRenderer.sprite = DoggoData.DoggoIcon;
         Rbody = GetComponent<Rigidbody2D>();
-
-        Invoke(nameof(ReenableGameLoss), GraceTime);
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
@@ -66,5 +65,19 @@ public class DoggoBehaviour : MonoBehaviour
 
     private void FixedUpdate() {
         Rbody.velocity = Vector2.ClampMagnitude(Rbody.velocity, MaxVelocityMagnitude);
+    }
+
+    private void OnEnable() {
+        EligibleForGameLoss = false;
+        HasCollidedAlready = false;
+        Invoke(nameof(ReenableGameLoss), GraceTime);
+    }
+
+    private void OnDisable() {
+        EligibleForGameLoss = false;
+    }
+
+    public void Reset() {
+        EligibleForGameLoss = false;
     }
 }
