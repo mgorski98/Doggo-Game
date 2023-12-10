@@ -214,8 +214,8 @@ MonoBehaviour:
         m_CallState: 2
   ChangeSprite: 1
   ChangeTargetGraphic: {fileID: 5302009951429626070}
-  ToggledStateSprite: {fileID: 21300000, guid: 2d83cec643660fa4293611cf1fbaf2bd, type: 3}
-  UntoggledStateSprite: {fileID: 21300000, guid: e69ddc72fcb5d3b41ae6b352a4e91df8, type: 3}
+  ToggledStateSprite: {fileID: 21300000, guid: e69ddc72fcb5d3b41ae6b352a4e91df8, type: 3}
+  UntoggledStateSprite: {fileID: 21300000, guid: 2d83cec643660fa4293611cf1fbaf2bd, type: 3}
 --- !u!114 &4730772315785292770
 MonoBehaviour:
   m_ObjectHideFlags: 0

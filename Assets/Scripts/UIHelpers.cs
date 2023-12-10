@@ -24,25 +24,34 @@ public class UIHelpers : MonoBehaviour
 
     private void Awake() {
         SoundOn.onValueChanged.AddListener(p => {
-            var newval = p.Item2;
-            Mixer.SetFloat("SoundVolume", Mathf.Log10(p.Item2 ? 1f : 0.0001f) * 20);
-            SoundToggleButton.Toggled = newval;
-            PlayerPrefs.SetInt("SOUND_VOLUME", newval.ToInt());
+            var targetVol = p.Item2 ? 1f : 0.0001f;
+            Mixer.SetFloat("SoundVolume", targetVol.ToDecibels());
+            SoundToggleButton.Toggled = p.Item2;
+            PlayerPrefs.SetInt("SOUND_VOLUME", p.Item2.ToInt());
         });
-        MusicOn.onValueChanged.AddListener(p => { 
-            var newval = p.Item2;
-            Mixer.SetFloat("MusicVolume", Mathf.Log10(p.Item2 ? 1f : 0.0001f) * 20);
-            MusicToggleButton.Toggled = newval;
-            PlayerPrefs.SetInt("MUSIC_VOLUME", newval.ToInt());
+        MusicOn.onValueChanged.AddListener(p => {
+            var targetVol = p.Item2 ? 1f : 0.0001f;
+            Mixer.SetFloat("MusicVolume", targetVol.ToDecibels());
+            MusicToggleButton.Toggled = p.Item2;
+            PlayerPrefs.SetInt("MUSIC_VOLUME", p.Item2.ToInt());
+
+            if (MusicPlayer != null)
+                MusicPlayer.MusicVolume = targetVol;
         });
+
+        Mixer.SetFloat("MusicVolume", (PlayerPrefs.GetInt("MUSIC_VOLUME", 1).ToBoolean() ? 1f : 0.0001f).ToDecibels());
+        Mixer.SetFloat("SoundVolume", (PlayerPrefs.GetInt("SOUND_VOLUME", 1).ToBoolean() ? 1f : 0.0001f).ToDecibels());
+    }
+
+    private void Start() {
+        MusicToggleButton.onClick.RemoveAllListeners();
+        SoundToggleButton.onClick.RemoveAllListeners();
         UpdateAudioButtons();
     }
 
     private void UpdateAudioButtons() {
-        float soundVolume = PlayerPrefs.GetInt("SOUND_VOLUME", 1).ToBoolean() ? 1f : 0f;
-        float musicVolume = PlayerPrefs.GetInt("MUSIC_VOLUME", 1).ToBoolean() ? 1f : 0f;
-        SoundOn.Value = soundVolume > 0;
-        MusicOn.Value = musicVolume > 0;
+        SoundOn.Value = PlayerPrefs.GetInt("SOUND_VOLUME", 1).ToBoolean();
+        MusicOn.Value = PlayerPrefs.GetInt("MUSIC_VOLUME", 1).ToBoolean();
     }
 
     public void ShowExitGameDialog() {
