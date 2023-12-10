@@ -23,8 +23,12 @@ public class DoggoBehaviour : MonoBehaviour, IPoolable
         Rbody = GetComponent<Rigidbody2D>();
     }
 
+    private void Start() {
+        EligibleForGameLoss = false; //ffs
+    }
+
     private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.CompareTag("Doggo") && !HasCollidedAlready) {
+        if (collision.gameObject.CompareTag("Doggo") && !HasCollidedAlready && !PlayerProgress.Instance.GameOver) {
             var behaviour = collision.gameObject.GetComponent<DoggoBehaviour>();
             if (behaviour.HasCollidedAlready)
                 return;
