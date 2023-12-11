@@ -18,6 +18,10 @@ public class DoggoBehaviour : MonoBehaviour, IPoolable
         DoggoSpriteRenderer = GetComponent<SpriteRenderer>();
         DoggoSpriteRenderer.sprite = DoggoData.DoggoIcon;
         Rbody = GetComponent<Rigidbody2D>();
+
+        if (GameModifiers.Instance.BouncyDoggos) {
+            Rbody.sharedMaterial = GameModifiers.Instance.BouncyMat;
+        }
     }
 
     private void Start() {
@@ -60,16 +64,6 @@ public class DoggoBehaviour : MonoBehaviour, IPoolable
     private void OnTriggerExit2D(Collider2D collision) {
         if (collision.gameObject.CompareTag("GameOverLine")) {
             EligibleForGameLoss = true;
-        }
-    }
-
-    private void Update() {
-        if (GameModifiers.Instance == null)
-            return;
-        if (GameModifiers.Instance.BouncyDoggos) {
-            if (Rbody.sharedMaterial != GameModifiers.Instance.BouncyMat) {
-                Rbody.sharedMaterial = GameModifiers.Instance.BouncyMat;
-            }
         }
     }
 
