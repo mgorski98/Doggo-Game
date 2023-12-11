@@ -52,7 +52,8 @@ public class DoggoSpawner : SerializedMonoBehaviour
     private void Update() {
         if (GameOver)
             return;
-        if (IsDoggoDropRequested() && InputEnabled) {
+        var isPressingUIButton = Utils.IsPointerOverUIElement();
+        if (IsDoggoDropRequested() && InputEnabled && !isPressingUIButton) {
             var obj = UnityObjectPool.Instance.Get(CurrentDoggoSelected.DoggoData.ID);
             obj.transform.SetPositionAndRotation(SpawnPoint.position, spawnRotation);
             obj.SetActive(true);
@@ -75,7 +76,7 @@ public class DoggoSpawner : SerializedMonoBehaviour
 #if UNITY_ANDROID
         if (Input.touchCount > 0) {
             Touch t = Input.GetTouch(0);
-            return t.phase == TouchPhase.Began;
+            return t.phase == TouchPhase.Ended;
         } else return false;
 #else
         return Input.GetMouseButtonDown(0);
@@ -85,9 +86,10 @@ public class DoggoSpawner : SerializedMonoBehaviour
     private Vector3 GetNewSpawnerPosition() {
         var targetPosition = transform.position;
 #if UNITY_ANDROID
-        if (Input.touchCount > 0) {
+        if (Input.touchCount > 0 && !Utils.IsPointerOverUIElement()) {
             Touch t = Input.GetTouch(0);
-            targetPosition = cam.ScreenToWorldPoint(t.position);
+            var converted = cam.ScreenToWorldPoint(t.position);
+            targetPosition = new Vector3(Mathf.Clamp(converted.x, XSpawnerBoundaries.Min, XSpawnerBoundaries.Max), targetPosition.y, targetPosition.z);
         }
 #else
         var pos = cam.ScreenToWorldPoint(Input.mousePosition.Copy(z: 0f));

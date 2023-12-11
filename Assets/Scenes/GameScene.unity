@@ -286,7 +286,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: a19c6e7f280abad449073af4cb7e15bb, type: 3}
   m_Color: {r: 1, g: 0.58085513, b: 0, a: 1}
   m_FlipX: 0
@@ -6305,10 +6305,10 @@ MonoBehaviour:
         mscorlib
     - Name: Item1
       Entry: 4
-      Data: -2.6
+      Data: -3.1
     - Name: Item2
       Entry: 4
-      Data: 3.55
+      Data: 3.1
     - Name: 
       Entry: 8
       Data: 
@@ -9603,7 +9603,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -18.819977}
+  m_AnchoredPosition: {x: 0, y: -18.819992}
   m_SizeDelta: {x: -20, y: -66.57}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1814086975
