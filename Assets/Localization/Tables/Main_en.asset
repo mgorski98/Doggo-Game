@@ -211,6 +211,11 @@ MonoBehaviour:
     m_Localized: Confirm
     m_Metadata:
       m_Items: []
+  - m_Id: 2002789893623808
+    m_Localized: Special thanks to all my friends who tested the game, especially
+      to Szymon and my girlfriend Iza, who also made some icons for me :)
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

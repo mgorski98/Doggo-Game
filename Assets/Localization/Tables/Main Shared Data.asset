@@ -207,6 +207,10 @@ MonoBehaviour:
     m_Key: ui-confirm
     m_Metadata:
       m_Items: []
+  - m_Id: 2002789893623808
+    m_Key: credits-special-thanks
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
