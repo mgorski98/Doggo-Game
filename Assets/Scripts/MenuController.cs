@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Sirenix.OdinInspector;
-using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 using TMPro;
 
 public class MenuController : SerializedMonoBehaviour
@@ -44,20 +44,28 @@ public class MenuController : SerializedMonoBehaviour
         }
 
         cam = Camera.main;
-        for (int i = 0; i < VersionLocalization.Length; ++i) {
-            VersionTextComponents[i].text = string.Format(VersionLocalization[i].GetLocalizedString(), Application.version);
-        }
+        AssignVersionTranslations();
 
-        UpdateAudioButtons();
+        LocalizationSettings.SelectedLocaleChanged += LocaleChanged;
     }
 
-    private void UpdateAudioButtons() {
+    private void OnDestroy() {
+        LocalizationSettings.SelectedLocaleChanged -= LocaleChanged;
+    }
 
+    private void LocaleChanged (Locale _l) {
+        AssignVersionTranslations();
     }
 
     private void Start() {
         //StartCoroutine(SpawnFlyingDoggos());
         StartCoroutine(StartLaunchingDoggosInTheAir());
+    }
+
+    private void AssignVersionTranslations() {
+        for (int i = 0; i < VersionLocalization.Length; ++i) {
+            VersionTextComponents[i].text = string.Format(VersionLocalization[i].GetLocalizedString(), Application.version);
+        }
     }
 
     public void ExitGame() {
