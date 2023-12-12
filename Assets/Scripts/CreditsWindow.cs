@@ -49,11 +49,23 @@ public class CreditsWindow : MonoBehaviour {
     }
 
     private void ParseCredits() {
-        var path = Path.Combine(Application.streamingAssetsPath, "credits.txt");
-        var lines = File.ReadAllLines(path).Where(s => !string.IsNullOrWhiteSpace(s)).ToArray();
+        var lines = LoadCreditsLineByLine();
         for (int i = 0; i < lines.Length; i += 2) {
             Entries.Add(new CreditsEntry(lines[i], lines[i+1]));
         }
+    }
+
+    private string[] LoadCreditsLineByLine() {
+        var path = Path.Combine(Application.streamingAssetsPath, "credits.txt");
+#if UNITY_ANDROID
+        var request = UnityEngine.Networking.UnityWebRequest.Get(path);
+        request.SendWebRequest();
+        while (!request.isDone) {}
+        var lines = request.downloadHandler.text.Split("\n");
+#else
+        var lines = File.ReadAllLines(path);
+#endif
+        return lines.WhereNot(string.IsNullOrWhiteSpace).ToArray();
     }
 
     public void Show() {
