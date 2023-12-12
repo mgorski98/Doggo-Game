@@ -104,6 +104,7 @@ public class DoggoSpawner : SerializedMonoBehaviour
 
     private void GenerateNewDoggo() {
         CurrentDoggoSelected = DoggoGenerator.RandomElement().GetComponent<DoggoBehaviour>();
+        PlayerProgress.Instance.PlayDoggoBark(CurrentDoggoSelected.DoggoData.ID);
     }
 
     private void WaitForNewDoggo(float waitTime) {

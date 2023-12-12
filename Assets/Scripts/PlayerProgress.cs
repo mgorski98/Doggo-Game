@@ -11,6 +11,7 @@ public class PlayerProgress : SingletonBehaviour<PlayerProgress> {
 
     public ObservableValue<long> Score = new(0L);
     public Dictionary<string, int> MergedDoggos = new();
+    public HashSet<string> DoggosAppeared = new();
 
     public GameFinishedWindow GameOverWindow;
 
@@ -18,10 +19,28 @@ public class PlayerProgress : SingletonBehaviour<PlayerProgress> {
 
     public bool GameOver = false;
 
+    [SerializeField]
+    private AudioSource ASource;
+
     protected override void Awake() {
         base.Awake();
 
         this.Score.onValueChanged.AddListener(p => ScoreText.StartCounting(p.Item2));
+    }
+
+    public void AddAppearedDoggo(string ID) => DoggosAppeared.Add(ID);
+    public bool HasAppearedAlready(string ID) => DoggosAppeared.Contains(ID);
+    public void PlayDoggoBark(string ID) {
+        var probabilityToPlay = !HasAppearedAlready(ID) ? 1f : 0.2f;
+        var shouldPlay = Random.value <= probabilityToPlay;
+        if (!shouldPlay)
+            return;
+
+        var prefab = MergeManager.Instance.DoggoPrefabs[ID];
+        var data = prefab.GetComponent<DoggoBehaviour>().DoggoData;
+        if (!data.BarkSounds.IsEmpty()) {
+            ASource.PlayOneShot(data.BarkSounds.RandomElement());
+        }
     }
 
     public void IncrementMergedDoggos(string doggoId, int incrBy) {

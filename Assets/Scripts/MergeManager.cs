@@ -24,13 +24,7 @@ public class MergeManager : SingletonBehaviour<MergeManager> {
             prefab.SetActive(true);
         }
 
-        int score = data.MergeScore;
-        PlayerProgress.Instance.Score.Value += score;
-
-        if (data.BarkSounds.Length > 0) {
-            var clip = data.BarkSounds.RandomElement();
-            AudioSource.PlayClipAtPoint(clip, Vector3.zero);
-        }
+        PlayerProgress.Instance.Score.Value += data.MergeScore;
 
         if (!PopSounds.IsEmpty()) {
             ASource.PlayOneShot(PopSounds.RandomElement());
