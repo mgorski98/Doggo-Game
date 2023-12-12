@@ -8,11 +8,10 @@ public class MusicPlayer : SerializedMonoBehaviour
 {
     public AudioClip[] MusicClips;
     public AudioSource ASource;
-    public AudioMixerGroup MusicGroup;
     public AudioMixer Mixer;
     public string MusicVolumeProperty;
 
-    private int CurrentIndex = 0;
+    private int CurrentIndex = -1;
     private Coroutine FadeOutCoro;
 
     [Header("CONFIG")]
@@ -35,7 +34,7 @@ public class MusicPlayer : SerializedMonoBehaviour
     }
 
     private void Update() {
-        if (MusicClips.Length <= 0)
+        if (MusicClips.IsEmpty())
             return;
 
         if (ASource.isPlaying) {
@@ -52,7 +51,17 @@ public class MusicPlayer : SerializedMonoBehaviour
     }
 
     public void NextSong(bool fadeIn) {
-        CurrentIndex = PlayRandom ? Random.Range(0, MusicClips.Length) : Utils.ClampWrapping(CurrentIndex + 1, 0, MusicClips.Length - 1);
+        if (MusicClips.IsEmpty())
+            return;
+
+        if (MusicClips.Length == 1) {
+            CurrentIndex = 0;
+        } else {
+            var oldIndex = CurrentIndex;
+            while (oldIndex == CurrentIndex) {
+                CurrentIndex = PlayRandom ? Random.Range(0, MusicClips.Length) : Utils.ClampWrapping(CurrentIndex + 1, 0, MusicClips.Length - 1);
+            }
+        }
         ASource.clip = MusicClips[CurrentIndex];
         ASource.Play();
         if (fadeIn)

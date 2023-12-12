@@ -7696,14 +7696,15 @@ MonoBehaviour:
     SerializationNodes: []
   MusicClips:
   - {fileID: 8300000, guid: 20d904c31b34e7248b2668797c1efc44, type: 3}
+  - {fileID: 8300000, guid: 4e9ff8ec263beff4b8d7b42b3f8f021a, type: 3}
+  - {fileID: 8300000, guid: a6ec6e40f717f8d49911ed29ac378730, type: 3}
   ASource: {fileID: 1439974143}
-  MusicGroup: {fileID: 7563251674487740167, guid: 2f3d12bf51e936d46884dc372c55d03d, type: 2}
   Mixer: {fileID: 24100000, guid: 2f3d12bf51e936d46884dc372c55d03d, type: 2}
   MusicVolumeProperty: MusicVolume
   FadeInOutDurationSeconds: 2
   ProgressFadeOutThreshold: 0.96
   MusicVolume: 0
-  PlayRandom: 0
+  PlayRandom: 1
 --- !u!1 &1504458160
 GameObject:
   m_ObjectHideFlags: 0
