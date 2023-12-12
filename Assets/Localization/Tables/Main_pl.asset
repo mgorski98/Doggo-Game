@@ -217,6 +217,11 @@ MonoBehaviour:
       ikon :)"
     m_Metadata:
       m_Items: []
+  - m_Id: 2007025041756160
+    m_Localized: "Wa\u017Cne: w\u0142\u0105czenie jakiegokolwiek z niewizualnych
+      efekt\xF3w wy\u0142\u0105cza zapisywanie wynik\xF3w"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

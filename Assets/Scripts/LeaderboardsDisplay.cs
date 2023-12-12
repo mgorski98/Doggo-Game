@@ -25,7 +25,7 @@ public class LeaderboardsDisplay : MonoBehaviour
     }
 
     private void Start() {
-        Scores = PlayerProgress.Instance.ParseLeaderboards(PlayerPrefs.GetString("LEADERBOARDS", ""));
+        Scores = PlayerProgress.ParseLeaderboards(PlayerPrefs.GetString("LEADERBOARDS", ""));
 
         if (Scores.Count <= 0) {
             NoScoresText.gameObject.SetActive(true);
@@ -40,7 +40,6 @@ public class LeaderboardsDisplay : MonoBehaviour
                     textComps[0].text = $"<color=#{ColorUtility.ToHtmlStringRGB(FirstPlaceColors[i])}>{textComps[0].text}</color>";
                 }
                 textComps[1].text = $"<align=\"right\">{score}</align>";
-                //var scoreStr = $"<align=\"right\">{score}</align>";
             }
         }
     }

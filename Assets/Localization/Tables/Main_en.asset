@@ -216,6 +216,10 @@ MonoBehaviour:
       to Szymon and my girlfriend Iza, who also made some icons for me :)
     m_Metadata:
       m_Items: []
+  - m_Id: 2007025041756160
+    m_Localized: 'Note: enabling any of the non-visual modifiers disables leaderboards'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

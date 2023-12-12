@@ -59,21 +59,25 @@ public class PlayerProgress : SingletonBehaviour<PlayerProgress> {
     }
 
     private int UpdateLeaderboards() {
+        return UpdateLeaderboards(this.Score);
+    }
+
+    public static int UpdateLeaderboards(long score) {
         var leaderboards = PlayerPrefs.GetString("LEADERBOARDS", "");
         int result = 0;
         string updatedLeaderboards = "";
         if (string.IsNullOrWhiteSpace(leaderboards)) {
-            updatedLeaderboards = this.Score.ToString();
+            updatedLeaderboards = score.ToString();
         } else {
             var scores = ParseLeaderboards(leaderboards);
-            scores.Add(this.Score);
+            scores.Add(score);
             scores = scores.OrderByDescending(l => l).Take(Mathf.Min(MAX_LEADERBOARDS_SIZE, scores.Count)).ToList();
             updatedLeaderboards = string.Join(',', scores);
-            result = scores.IndexOf(this.Score);
+            result = scores.IndexOf(score);
         }
         PlayerPrefs.SetString("LEADERBOARDS", updatedLeaderboards);
         return result;
     }
 
-    public List<long> ParseLeaderboards(string input) => string.IsNullOrWhiteSpace(input) ? new() : input.Split(',').Select(long.Parse).OrderByDescending(l => l).ToList();
+    public static List<long> ParseLeaderboards(string input) => string.IsNullOrWhiteSpace(input) ? new() : input.Split(',').Select(long.Parse).OrderByDescending(l => l).ToList();
 }

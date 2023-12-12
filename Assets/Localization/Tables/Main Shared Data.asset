@@ -211,6 +211,10 @@ MonoBehaviour:
     m_Key: credits-special-thanks
     m_Metadata:
       m_Items: []
+  - m_Id: 2007025041756160
+    m_Key: game-modifiers-info
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
