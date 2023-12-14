@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using TMPro;
 using System.Linq;
-using System.Collections;
 using DG.Tweening;
 
 public class GameFinishedWindow : MonoBehaviour {
@@ -13,26 +12,36 @@ public class GameFinishedWindow : MonoBehaviour {
     [ColorUsage(true, true)]
     public Color[] FirstPlaceColors;
 
-    private Vector2 StartPosition;
-
-    private void Awake() {
-        StartPosition = (transform as RectTransform).anchoredPosition;
-    }
+    public float TargetStatsDisplayX;
+    public RectTransform DoggoStatsParent;
+    public RectTransform DoggoStatsWindow;
+    public GameObject DoggoStatImageCounterDisplayPrefab;
 
     public void Show(int leaderboardIndex) {
-        //todo: zobaczymy, może zrobić nowy layout gdzie wyświetlamy obrazki i ile piesków danego typu było połączonych
         var doggosMerged = PlayerProgress.Instance.MergedDoggos;
         var score = PlayerProgress.Instance.Score;
 
         MergedDoggosText.text = doggosMerged.Sum(kvp => kvp.Value).ToString();
         ScoreText.text = score.ToString() + ((leaderboardIndex < FirstPlaceColors.Length && leaderboardIndex >= 0) ? $" <color=#{ColorUtility.ToHtmlStringRGB(FirstPlaceColors[leaderboardIndex])}>(#{leaderboardIndex+1} place!)</color>" : "");
         gameObject.SetActive(true);
-        
-        StartCoroutine(Show_Coro());
+
+        ShowWindow();
     }
 
-    public IEnumerator Show_Coro() {
+    public void ShowWindow() {
         (transform as RectTransform).DOAnchorPosY(0, ShowWaitTime);
-        yield return new WaitForSeconds(ShowWaitTime);
+    }
+
+    public void ShowMergeDetails() {
+        PlayerProgress.Instance.MergedDoggos.ForEach(kvp => {
+            var (doggoId, count) = kvp;
+            var data = PlayerProgress.Instance.DoggoDatas[doggoId];
+            var obj = Instantiate(DoggoStatImageCounterDisplayPrefab, DoggoStatsParent);
+            var counter = obj.GetComponent<ImageCounter>();
+            counter.Image.sprite = data.DoggoIcon;
+            counter.UpdateDisplay(count);
+        });
+        DoggoStatsWindow.gameObject.SetActive(true);
+        DoggoStatsWindow.DOAnchorPosX(TargetStatsDisplayX, ShowWaitTime);
     }
 }

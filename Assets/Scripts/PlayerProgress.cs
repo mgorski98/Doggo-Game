@@ -1,8 +1,6 @@
-﻿using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
-using Sirenix.OdinInspector;
 
 public class PlayerProgress : SingletonBehaviour<PlayerProgress> {
     public ScoreCountingLabel ScoreText;
@@ -12,6 +10,7 @@ public class PlayerProgress : SingletonBehaviour<PlayerProgress> {
     public ObservableValue<long> Score = new(0L);
     public Dictionary<string, int> MergedDoggos = new();
     public HashSet<string> DoggosAppeared = new();
+    public Dictionary<string, DoggoData> DoggoDatas = new();
 
     public GameFinishedWindow GameOverWindow;
 
@@ -26,6 +25,7 @@ public class PlayerProgress : SingletonBehaviour<PlayerProgress> {
         base.Awake();
 
         this.Score.onValueChanged.AddListener(p => ScoreText.StartCounting(p.Item2));
+        Resources.LoadAll<DoggoData>("Doggos").ForEach(data => DoggoDatas.Add(data.ID, data));
     }
 
     public void AddAppearedDoggo(string ID) => DoggosAppeared.Add(ID);
@@ -63,6 +63,9 @@ public class PlayerProgress : SingletonBehaviour<PlayerProgress> {
     }
 
     public static int UpdateLeaderboards(long score) {
+        if (GameModifiers.Instance.IsAnyModifierActive) {
+            return -1;
+        }
         var leaderboards = PlayerPrefs.GetString("LEADERBOARDS", "");
         int result = 0;
         string updatedLeaderboards = "";

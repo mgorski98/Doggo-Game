@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.Localization.Settings;
-using UnityEngine.Localization;
 using UnityEngine.SceneManagement;
 
 

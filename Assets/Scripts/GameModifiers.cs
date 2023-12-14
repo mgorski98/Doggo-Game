@@ -17,6 +17,8 @@ public class GameModifiers : SingletonBehaviour<GameModifiers> {
     private ColorAdjustments ColorAdjustEffect;
     private LensDistortion LensDistortionEffect;
 
+    public bool IsAnyModifierActive => BouncyDoggos || InvisibleDoggoPreview || TimedMode;
+
     protected override void Awake() {
         base.Awake();
         PostProcessProfile.TryGet(out GrainEffect);

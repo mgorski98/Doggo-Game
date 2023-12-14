@@ -1,8 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class LeaderboardsDisplay : MonoBehaviour
 {
@@ -13,6 +12,8 @@ public class LeaderboardsDisplay : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI NoScoresText;
     [SerializeField]
+    private TextMeshProUGUI LeaderboardsDisabledText;
+    [SerializeField]
     private RectTransform LeaderboardWidgetsParent;
 
     public int MaxScoreWidth = 20;
@@ -20,11 +21,20 @@ public class LeaderboardsDisplay : MonoBehaviour
     [ColorUsage(true, true)]
     public Color[] FirstPlaceColors;
 
+    private bool LeaderboardsDisabled = false;
+
     private void Awake() {
         NoScoresText.gameObject.SetActive(false);
+        LeaderboardsDisabledText.gameObject.SetActive(false);
+
+        LeaderboardsDisabled = GameModifiers.Instance.IsAnyModifierActive;
     }
 
     private void Start() {
+        if (LeaderboardsDisabled && SceneManager.GetActiveScene().name != "MenuScene") {
+            LeaderboardsDisabledText.gameObject.SetActive(true);
+            return;
+        }
         Scores = PlayerProgress.ParseLeaderboards(PlayerPrefs.GetString("LEADERBOARDS", ""));
 
         if (Scores.Count <= 0) {
