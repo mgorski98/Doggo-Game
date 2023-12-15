@@ -19,6 +19,7 @@ public class MergeManager : SingletonBehaviour<MergeManager> {
             var prefab = UnityObjectPool.Instance.Get(data.MergesInto.ID);
             var pos = (obj1.transform.position + obj2.transform.position) / 2f;
             var rot = (obj1.transform.eulerAngles + obj2.transform.eulerAngles) / 2f;
+            PlayerProgress.Instance.PlayDoggoBark(data.MergesInto.ID);
             prefab.transform.SetPositionAndRotation(pos, Quaternion.Euler(rot));
             prefab.SetActive(true);
         }

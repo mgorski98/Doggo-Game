@@ -33,6 +33,8 @@ public class DoggoSpawner : SerializedMonoBehaviour
     private GameObject DropPositionIndicator;
     [SerializeField]
     private float DoggoHeadTweeningTime = 0.2f;
+    [SerializeField, Range(0, 1f)]
+    private float DoggoBarkDelay = 0.5f;
 
     private void Awake() {
         var tempList = new List<GameObject>();
@@ -107,7 +109,6 @@ public class DoggoSpawner : SerializedMonoBehaviour
 
     private void GenerateNewDoggo() {
         CurrentDoggoSelected = DoggoGenerator.RandomElement().GetComponent<DoggoBehaviour>();
-        PlayerProgress.Instance.PlayDoggoBark(CurrentDoggoSelected.DoggoData.ID);
     }
 
     private void WaitForNewDoggo(float waitTime) {
@@ -116,8 +117,9 @@ public class DoggoSpawner : SerializedMonoBehaviour
     }
 
     private IEnumerator WaitForNewDoggo_Coro(float spawnTime) {
-        yield return new WaitForSeconds(spawnTime - 0.2f);
         GenerateNewDoggo();
+        PlayerProgress.Instance.PlayDoggoBark(CurrentDoggoSelected.DoggoData.ID);
+        yield return new WaitForSeconds(spawnTime);
         spawnRotation = Quaternion.Euler(Vector3.forward * Random.Range(-360f, 360f));
         var doggoData = CurrentDoggoSelected.GetComponent<DoggoBehaviour>().DoggoData;
 
@@ -127,6 +129,10 @@ public class DoggoSpawner : SerializedMonoBehaviour
         CurrentDoggoShown.transform.DORotateQuaternion(spawnRotation, DoggoHeadTweeningTime);
 
         InputEnabled = true;
+    }
+
+    private IEnumerator PlayDelayedDoggoSound() {
+        yield return new WaitForSeconds(DoggoBarkDelay);
     }
 
     public void EnableInput() => InputEnabled = true;
