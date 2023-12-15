@@ -6843,10 +6843,10 @@ MonoBehaviour:
         mscorlib
     - Name: Item1
       Entry: 4
-      Data: 0.9
+      Data: 0.3
     - Name: Item2
       Entry: 4
-      Data: 1.2
+      Data: 0.5
     - Name: 
       Entry: 8
       Data: 
