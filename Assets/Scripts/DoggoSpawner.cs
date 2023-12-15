@@ -118,7 +118,6 @@ public class DoggoSpawner : SerializedMonoBehaviour
 
     private IEnumerator WaitForNewDoggo_Coro(float spawnTime) {
         GenerateNewDoggo();
-        PlayerProgress.Instance.PlayDoggoBark(CurrentDoggoSelected.DoggoData.ID);
         yield return new WaitForSeconds(spawnTime);
         spawnRotation = Quaternion.Euler(Vector3.forward * Random.Range(-360f, 360f));
         var doggoData = CurrentDoggoSelected.GetComponent<DoggoBehaviour>().DoggoData;
@@ -128,6 +127,7 @@ public class DoggoSpawner : SerializedMonoBehaviour
         CurrentDoggoShown.transform.DOScale(CurrentDoggoSelected.transform.localScale, DoggoHeadTweeningTime);
         CurrentDoggoShown.transform.DORotateQuaternion(spawnRotation, DoggoHeadTweeningTime);
 
+        PlayerProgress.Instance.PlayDoggoBark(CurrentDoggoSelected.DoggoData.ID);
         InputEnabled = true;
     }
 
