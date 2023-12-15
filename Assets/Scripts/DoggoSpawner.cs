@@ -4,6 +4,7 @@ using Sirenix.Serialization;
 using System.Linq;
 using System.Collections.Generic;
 using System.Collections;
+using DG.Tweening;
 
 public class DoggoSpawner : SerializedMonoBehaviour
 {
@@ -22,7 +23,7 @@ public class DoggoSpawner : SerializedMonoBehaviour
     [OdinSerialize]
     private SpriteRenderer CurrentDoggoShown;
     private DoggoBehaviour CurrentDoggoSelected;
-    [OdinSerialize]
+    [OdinSerialize, Min(0.3f)]
     private float SpawnWaitTime = 1f;
     [OdinSerialize]
     private bool InputEnabled = true;
@@ -30,6 +31,8 @@ public class DoggoSpawner : SerializedMonoBehaviour
     private Quaternion spawnRotation;
     [OdinSerialize]
     private GameObject DropPositionIndicator;
+    [SerializeField]
+    private float DoggoHeadTweeningTime = 0.2f;
 
     private void Awake() {
         var tempList = new List<GameObject>();
@@ -113,13 +116,16 @@ public class DoggoSpawner : SerializedMonoBehaviour
     }
 
     private IEnumerator WaitForNewDoggo_Coro(float spawnTime) {
-        yield return new WaitForSeconds(spawnTime);
+        yield return new WaitForSeconds(spawnTime - 0.2f);
         GenerateNewDoggo();
         spawnRotation = Quaternion.Euler(Vector3.forward * Random.Range(-360f, 360f));
         var doggoData = CurrentDoggoSelected.GetComponent<DoggoBehaviour>().DoggoData;
+
         CurrentDoggoShown.sprite = doggoData.DoggoIcon;
-        CurrentDoggoShown.transform.localScale = CurrentDoggoSelected.transform.localScale;
-        CurrentDoggoShown.transform.rotation = spawnRotation;
+        CurrentDoggoShown.transform.localScale = Vector3.zero;
+        CurrentDoggoShown.transform.DOScale(CurrentDoggoSelected.transform.localScale, DoggoHeadTweeningTime);
+        CurrentDoggoShown.transform.DORotateQuaternion(spawnRotation, DoggoHeadTweeningTime);
+
         InputEnabled = true;
     }
 

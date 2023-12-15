@@ -1875,7 +1875,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 160.8, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &445144841
@@ -2770,7 +2770,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 160.8, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &558362725
@@ -3102,7 +3102,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 160.8, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &603693388
@@ -3475,6 +3475,26 @@ MonoBehaviour:
     - Name: DoggosAppeared
       Entry: 7
       Data: 2|System.Collections.Generic.HashSet`1[[System.String, mscorlib]], System.Core
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: DoggoDatas
+      Entry: 7
+      Data: 3|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[DoggoData,
+        Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 4|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 12
       Data: 0
@@ -5911,6 +5931,10 @@ MonoBehaviour:
   - {r: 1, g: 0.94134796, b: 0, a: 1}
   - {r: 0.3679245, g: 0.3679245, b: 0.3679245, a: 1}
   - {r: 0.056603774, g: 0.022846965, b: 0, a: 1}
+  TargetStatsDisplayX: 0
+  DoggoStatsParent: {fileID: 0}
+  DoggoStatsWindow: {fileID: 0}
+  DoggoStatImageCounterDisplayPrefab: {fileID: 0}
 --- !u!1 &1073008033
 GameObject:
   m_ObjectHideFlags: 0
@@ -5987,6 +6011,7 @@ MonoBehaviour:
     Weight: 2
   - DoggoPrefab: {fileID: 8731266827256527107, guid: 5a513057e05542d439099b01e960d596, type: 3}
     Weight: 1
+  DoggoHeadTweeningTime: 0.25
 --- !u!4 &1073008035
 Transform:
   m_ObjectHideFlags: 0
@@ -7909,7 +7934,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 160.8, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1604241770
@@ -10749,6 +10774,30 @@ PrefabInstance:
     - target: {fileID: 1865238851287003146, guid: 72a6e15f81374fd4887ec344f7031cfb, type: 3}
       propertyPath: m_PixelsPerUnitMultiplier
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2575974102316200343, guid: 72a6e15f81374fd4887ec344f7031cfb, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2575974102316200343, guid: 72a6e15f81374fd4887ec344f7031cfb, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2575974102316200343, guid: 72a6e15f81374fd4887ec344f7031cfb, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 84
+      objectReference: {fileID: 0}
+    - target: {fileID: 2575974102316200343, guid: 72a6e15f81374fd4887ec344f7031cfb, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2575974102316200343, guid: 72a6e15f81374fd4887ec344f7031cfb, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 47
+      objectReference: {fileID: 0}
+    - target: {fileID: 2575974102316200343, guid: 72a6e15f81374fd4887ec344f7031cfb, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2682879230530499300, guid: 72a6e15f81374fd4887ec344f7031cfb, type: 3}
       propertyPath: m_AnchorMax.y
