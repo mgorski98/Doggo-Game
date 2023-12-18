@@ -1797,7 +1797,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -20, y: -25.462234}
+  m_AnchoredPosition: {x: -20, y: -25.46222}
   m_SizeDelta: {x: 164.1039, y: -80.92442}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &425046471
@@ -10993,7 +10993,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5054414997615871859, guid: 72a6e15f81374fd4887ec344f7031cfb, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -53.41176
+      value: -53.411743
       objectReference: {fileID: 0}
     - target: {fileID: 5054414997615871859, guid: 72a6e15f81374fd4887ec344f7031cfb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -11033,20 +11033,34 @@ PrefabInstance:
       objectReference: {fileID: 9185752889036062345, guid: 72a6e15f81374fd4887ec344f7031cfb, type: 3}
     - target: {fileID: 9185752889036062345, guid: 72a6e15f81374fd4887ec344f7031cfb, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.size
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9185752889036062345, guid: 72a6e15f81374fd4887ec344f7031cfb, type: 3}
-      propertyPath: serializationData.ReferencedUnityObjects.Array.data[0]
-      value: 
-      objectReference: {fileID: 809618850}
+      propertyPath: serializationData.PrefabModifications.Array.data[0]
+      value: '"path":"Effects.[0].Curve","value":{"$id":0,"$type":"UnityEngine.AnimationCurve,
+        UnityEngine.CoreModule",{"$id":1,"$type":"UnityEngine.Keyframe[], UnityEngine.CoreModule","$rlength":5,"$rcontent":[{"$type":"UnityEngine.Keyframe,
+        UnityEngine.CoreModule","ver":1,"m_Time":0.00625,"m_Value":0.008379832,"m_InTangent":0,"m_OutTangent":0,"m_TangentMode":136,"m_WeightedMode":0,"m_InWeight":0.333333343,"m_OutWeight":0.333333343},{"$type":"UnityEngine.Keyframe,
+        UnityEngine.CoreModule","ver":1,"m_Time":0.175,"m_Value":0.501862168,"m_InTangent":2.05319214,"m_OutTangent":2.05319214,"m_TangentMode":136,"m_WeightedMode":0,"m_InWeight":0.333333343,"m_OutWeight":0.333333343},{"$type":"UnityEngine.Keyframe,
+        UnityEngine.CoreModule","ver":1,"m_Time":0.49375,"m_Value":1.009311,"m_InTangent":0,"m_OutTangent":0,"m_TangentMode":136,"m_WeightedMode":0,"m_InWeight":0.333333343,"m_OutWeight":0.333333343},{"$type":"UnityEngine.Keyframe,
+        UnityEngine.CoreModule","ver":1,"m_Time":0.862499952,"m_Value":0.515828669,"m_InTangent":-1.96795225,"m_OutTangent":-1.96795225,"m_TangentMode":136,"m_WeightedMode":0,"m_InWeight":0.333333343,"m_OutWeight":0.333333343},{"$type":"UnityEngine.Keyframe,
+        UnityEngine.CoreModule","ver":1,"m_Time":0.99999994,"m_Value":0.0130353253,"m_InTangent":0,"m_OutTangent":0,"m_TangentMode":136,"m_WeightedMode":0,"m_InWeight":0.333333343,"m_OutWeight":0.333333343}]},8,8}'
+      objectReference: {fileID: 0}
     - target: {fileID: 9185752889036062345, guid: 72a6e15f81374fd4887ec344f7031cfb, type: 3}
-      propertyPath: serializationData.ReferencedUnityObjects.Array.data[1]
-      value: 
-      objectReference: {fileID: 809618850}
+      propertyPath: serializationData.PrefabModifications.Array.data[1]
+      value: '"path":"Effects.[0].Text","value":$eref:0'
+      objectReference: {fileID: 0}
+    - target: {fileID: 9185752889036062345, guid: 72a6e15f81374fd4887ec344f7031cfb, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[2]
+      value: '"path":"TargetText","value":$eref:0'
+      objectReference: {fileID: 0}
     - target: {fileID: 9185752889036062345, guid: 72a6e15f81374fd4887ec344f7031cfb, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9185752889036062345, guid: 72a6e15f81374fd4887ec344f7031cfb, type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 809618850}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
