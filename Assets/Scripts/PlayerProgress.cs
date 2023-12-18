@@ -36,7 +36,7 @@ public class PlayerProgress : SingletonBehaviour<PlayerProgress> {
         if (!shouldPlay)
             return;
 
-        var prefab = MergeManager.Instance.DoggoPrefabs[ID];
+        var prefab = GameManager.Instance.DoggoPrefabs[ID];
         var data = prefab.GetComponent<DoggoBehaviour>().DoggoData;
         if (!data.BarkSounds.IsEmpty()) {
             ASource.PlayOneShot(data.BarkSounds.RandomElement());

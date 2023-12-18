@@ -33,8 +33,8 @@ public class DoggoSpawner : SerializedMonoBehaviour
     private GameObject DropPositionIndicator;
     [SerializeField]
     private float DoggoHeadTweeningTime = 0.2f;
-    [SerializeField, Range(0, 1f)]
-    private float DoggoBarkDelay = 0.5f;
+
+    public bool PickUpModeEnabled = false;
 
     private void Awake() {
         var tempList = new List<GameObject>();
@@ -58,7 +58,7 @@ public class DoggoSpawner : SerializedMonoBehaviour
         if (GameOver)
             return;
         var isPressingUIButton = Utils.IsPointerOverUIElement();
-        if (IsDoggoDropRequested() && InputEnabled && !isPressingUIButton) {
+        if (IsDoggoDropRequested() && InputEnabled && !isPressingUIButton && !PickUpModeEnabled) {
             var obj = UnityObjectPool.Instance.Get(CurrentDoggoSelected.DoggoData.ID);
             obj.transform.SetPositionAndRotation(SpawnPoint.position, spawnRotation);
             obj.SetActive(true);
@@ -70,7 +70,8 @@ public class DoggoSpawner : SerializedMonoBehaviour
     private void LateUpdate() {
         if (GameOver)
             return;
-        MoveSpawner();
+        if (!PickUpModeEnabled)
+            MoveSpawner();
     }
 
     private void MoveSpawner() {
@@ -119,6 +120,26 @@ public class DoggoSpawner : SerializedMonoBehaviour
     private IEnumerator WaitForNewDoggo_Coro(float spawnTime) {
         GenerateNewDoggo();
         yield return new WaitForSeconds(spawnTime);
+
+        ShowSelectedDoggo();
+
+        PlayerProgress.Instance.PlayDoggoBark(CurrentDoggoSelected.DoggoData.ID);
+        InputEnabled = true;
+    }
+
+    public void EnableInput() => InputEnabled = true;
+    public void DisableInput() => InputEnabled = false;
+
+    public void HandleDoggoPickedUp(DoggoBehaviour doggoBehaviour) {
+        CurrentDoggoSelected = doggoBehaviour;
+        ShowSelectedDoggo();
+        Invoke(nameof(DisablePickUpMode), 0.05f); //because the doggo was immediately dropped...
+        GameManager.Instance.PickUpsLeft.Value--;
+    }
+
+    private void DisablePickUpMode() => GameManager.Instance.DoggoPickUpEnabled.Value = false;
+
+    private void ShowSelectedDoggo() {
         spawnRotation = Quaternion.Euler(Vector3.forward * Random.Range(-360f, 360f));
         var doggoData = CurrentDoggoSelected.GetComponent<DoggoBehaviour>().DoggoData;
 
@@ -126,15 +147,5 @@ public class DoggoSpawner : SerializedMonoBehaviour
         CurrentDoggoShown.transform.localScale = Vector3.zero;
         CurrentDoggoShown.transform.DOScale(CurrentDoggoSelected.transform.localScale, DoggoHeadTweeningTime);
         CurrentDoggoShown.transform.DORotateQuaternion(spawnRotation, DoggoHeadTweeningTime);
-
-        PlayerProgress.Instance.PlayDoggoBark(CurrentDoggoSelected.DoggoData.ID);
-        InputEnabled = true;
     }
-
-    private IEnumerator PlayDelayedDoggoSound() {
-        yield return new WaitForSeconds(DoggoBarkDelay);
-    }
-
-    public void EnableInput() => InputEnabled = true;
-    public void DisableInput() => InputEnabled = false;
 }

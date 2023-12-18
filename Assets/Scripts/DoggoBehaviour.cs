@@ -38,7 +38,7 @@ public class DoggoBehaviour : MonoBehaviour, IPoolable
                 return;
             behaviour.HasCollidedAlready = true;
             HasCollidedAlready = true;
-            MergeManager.Instance.QueueMerge(gameObject, collision.gameObject, otherDoggoData);
+            GameManager.Instance.QueueMerge(gameObject, collision.gameObject, otherDoggoData);
         }
 
         if (collision.gameObject.CompareTag("Doggo")) {
@@ -72,8 +72,17 @@ public class DoggoBehaviour : MonoBehaviour, IPoolable
     }
 
     private void OnEnable() {
-        EligibleForGameLoss = false;
         HasCollidedAlready = false;
+        Reset();
+    }
+
+    public void OnMouseDown() {
+        if (!GameManager.Instance.DoggoPickUpEnabled)
+            return;
+        if (GameManager.Instance.PickUpsLeft <= 0)
+            return;
+
+        GameManager.Instance.PickUpDoggo(this);
     }
 
     public void Reset() {
