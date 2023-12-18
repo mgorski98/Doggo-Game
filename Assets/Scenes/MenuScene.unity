@@ -6772,45 +6772,6 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: FlyingDoggoSpawningTimeRanges
-      Entry: 7
-      Data: System.ValueTuple`2[[System.Single, mscorlib],[System.Single, mscorlib]],
-        mscorlib
-    - Name: Item1
-      Entry: 4
-      Data: 0
-    - Name: Item2
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: FlyingDoggoYPosSpawningRanges
-      Entry: 7
-      Data: System.ValueTuple`2[[System.Single, mscorlib],[System.Single, mscorlib]],
-        mscorlib
-    - Name: Item1
-      Entry: 4
-      Data: 0
-    - Name: Item2
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: FlyingDoggosSpeedRange
-      Entry: 7
-      Data: System.ValueTuple`2[[System.Single, mscorlib],[System.Single, mscorlib]],
-        mscorlib
-    - Name: Item1
-      Entry: 4
-      Data: 0
-    - Name: Item2
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: ShootingStrengthRanges
       Entry: 7
       Data: System.ValueTuple`2[[System.Single, mscorlib],[System.Single, mscorlib]],
@@ -6869,8 +6830,7 @@ MonoBehaviour:
   RotatingHeads:
   - {fileID: 237897525}
   - {fileID: 1057203679}
-  FlyingDoggoPrefab: {fileID: 0}
-  ShootingDoggoPrefab: {fileID: 4476849062571479736, guid: 02204abe898235643971dbbe48ec7b1b, type: 3}
+  ShootingDoggoPoolID: DOGGO_HEAD
   YViewportOffset: -0.2
   DoggoHeadsParent: {fileID: 609592255}
   VersionLocalization:
@@ -9182,6 +9142,126 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttons: []
+--- !u!1 &1667899146
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1667899148}
+  - component: {fileID: 1667899147}
+  m_Layer: 0
+  m_Name: pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1667899147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1667899146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 405232aa7f0475347ba33893099acedb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 4476849062571479736, guid: 02204abe898235643971dbbe48ec7b1b, type: 3}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: pools
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[GameObjectPool,
+        Assembly-CSharp-firstpass]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: DOGGO_HEAD
+    - Name: $v
+      Entry: 7
+      Data: 2|GameObjectPool, Assembly-CSharp-firstpass
+    - Name: PooledPrefab
+      Entry: 10
+      Data: 0
+    - Name: details
+      Entry: 7
+      Data: 3|PoolDetails, Assembly-CSharp-firstpass
+    - Name: <Identifier>k__BackingField
+      Entry: 1
+      Data: DOGGO_HEAD
+    - Name: <InitialSize>k__BackingField
+      Entry: 3
+      Data: 30
+    - Name: <SizeIncrement>k__BackingField
+      Entry: 3
+      Data: 10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: pool
+      Entry: 7
+      Data: 4|System.Collections.Generic.Queue`1[[UnityEngine.GameObject, UnityEngine.CoreModule]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+--- !u!4 &1667899148
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1667899146}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.739864, y: 1.7165213, z: -9.003238}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1697168450
 GameObject:
   m_ObjectHideFlags: 0

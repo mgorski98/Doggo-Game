@@ -17,12 +17,7 @@ public class MenuController : SerializedMonoBehaviour
     public Sprite[] DoggoHeadImages;
     public ConstantRotator[] RotatingHeads;
 
-    public (float, float) FlyingDoggoSpawningTimeRanges;
-    public (float, float) FlyingDoggoYPosSpawningRanges;
-    public (float, float) FlyingDoggosSpeedRange;
-    public GameObject FlyingDoggoPrefab;
-
-    public GameObject ShootingDoggoPrefab;
+    public string ShootingDoggoPoolID;
     public (float, float) ShootingStrengthRanges;
     public (float, float) ShootingAngleRanges;
     public (float, float) ShootingTimeRanges;
@@ -58,7 +53,6 @@ public class MenuController : SerializedMonoBehaviour
     }
 
     private void Start() {
-        //StartCoroutine(SpawnFlyingDoggos());
         StartCoroutine(StartLaunchingDoggosInTheAir());
     }
 
@@ -116,20 +110,6 @@ public class MenuController : SerializedMonoBehaviour
         GameModifiers.SetActive(false);
     }
 
-    private IEnumerator SpawnFlyingDoggos() {
-        while (true) {
-            yield return new WaitForSeconds(Random.Range(FlyingDoggoSpawningTimeRanges.Item1, FlyingDoggoSpawningTimeRanges.Item2));
-
-            float direction = Random.Range(0f, 100f) <= 50f ? -1f : 1f;
-            Vector3 spawnPosition = new Vector3();
-            float speed = Random.Range(FlyingDoggosSpeedRange.Item1, FlyingDoggosSpeedRange.Item2);
-            var obj = Instantiate(FlyingDoggoPrefab, spawnPosition, Quaternion.identity);
-            var comp = obj.GetComponent<FlyingMenuDoggoHead>();
-            comp.Speed = speed;
-            comp.Direction = direction;
-        }
-    }
-
     private IEnumerator StartLaunchingDoggosInTheAir() {
         while (true) {
             yield return new WaitForSeconds(Random.Range(ShootingTimeRanges.Item1, ShootingTimeRanges.Item2));
@@ -142,12 +122,20 @@ public class MenuController : SerializedMonoBehaviour
                 1f
             ).normalized;
             float shootingStrength = Random.Range(ShootingStrengthRanges.Item1, ShootingStrengthRanges.Item2);
-            var obj = Instantiate(ShootingDoggoPrefab, pos.Copy(x: 0f, z: 0f), Quaternion.identity, DoggoHeadsParent);
+            var obj = UnityObjectPool.Instance.Get(ShootingDoggoPoolID);
+            obj.transform.position = pos.Copy(x: 0f, z: 0f);
+            obj.transform.SetParent(DoggoHeadsParent);
             obj.GetComponent<Rigidbody2D>().AddForce(shootingDirection * shootingStrength, ForceMode2D.Impulse);
             obj.GetComponentInChildren<SpriteRenderer>().sprite = DoggoHeadImages.RandomElement();
             obj.GetComponent<ConstantRotator>().RotationSpeed = shootingStrength * 4 * -Mathf.Sign(shootingDirection.x);
 
-            Destroy(obj, 6.5f);
+            StartCoroutine(ReclaimDoggoHeadAfterDelay(obj));
         } 
+    }
+
+    private IEnumerator ReclaimDoggoHeadAfterDelay(GameObject doggoHeadObj) {
+        yield return new WaitForSeconds(5f);
+
+        UnityObjectPool.Instance.Reclaim(ShootingDoggoPoolID, doggoHeadObj);
     }
 }
