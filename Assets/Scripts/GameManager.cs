@@ -1,6 +1,7 @@
 ﻿using Sirenix.Serialization;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : SingletonBehaviour<GameManager> {
     [OdinSerialize]
@@ -23,10 +24,14 @@ public class GameManager : SingletonBehaviour<GameManager> {
     public ObservableValue<bool> DoggoPickUpEnabled = new(false);
 
     public ToggleButton PickUpButton;
+    public TextMeshProUGUI PickUpsText;
 
     private void Start() {
         DoggoPickUpEnabled.onValueChanged.AddListener(_p => this.ToggleDoggoPickUpMode_Internal());
         PickUpsLeft.onValueChanged.AddListener(_p => PickUpButton.interactable = PickUpsLeft.Value > 0);
+        PickUpsLeft.onValueChanged.AddListener(_p => {
+            PickUpsText.text = $"{PickUpsLeft.Value}x";
+        });
     }
 
     public void QueueMerge(GameObject obj1, GameObject obj2, DoggoData data) {

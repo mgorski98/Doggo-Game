@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 2635718331916679979}
   - component: {fileID: 2587688197496682517}
   - component: {fileID: 2136260374348694180}
-  m_Layer: 0
+  - component: {fileID: 5146500262006466095}
+  m_Layer: 3
   m_Name: DoggoTemplate
   m_TagString: Doggo
   m_Icon: {fileID: 0}
@@ -163,5 +164,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HasCollidedAlready: 0
   DoggoData: {fileID: 0}
-  GraceTime: 1.69
+  EligibleForGameLoss: 0
   MaxVelocityMagnitude: 25
+--- !u!114 &5146500262006466095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3644588722866914071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls: []

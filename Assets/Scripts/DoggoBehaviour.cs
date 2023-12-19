@@ -1,7 +1,7 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class DoggoBehaviour : MonoBehaviour, IPoolable
-{
+public class DoggoBehaviour : MonoBehaviour, IPoolable, IPointerClickHandler {
     public bool HasCollidedAlready = false;
     public DoggoData DoggoData;
     private SpriteRenderer DoggoSpriteRenderer;
@@ -76,16 +76,19 @@ public class DoggoBehaviour : MonoBehaviour, IPoolable
         Reset();
     }
 
-    public void OnMouseDown() {
+    public void Reset() {
+        EligibleForGameLoss = false;
+    }
+
+    public void OnPointerClick(PointerEventData eventData) {
+        if (eventData.button != PointerEventData.InputButton.Left)
+            return;
+
         if (!GameManager.Instance.DoggoPickUpEnabled)
             return;
         if (GameManager.Instance.PickUpsLeft <= 0)
             return;
 
         GameManager.Instance.PickUpDoggo(this);
-    }
-
-    public void Reset() {
-        EligibleForGameLoss = false;
     }
 }
