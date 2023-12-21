@@ -1,6 +1,7 @@
 ﻿using Sirenix.Serialization;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class GameManager : SingletonBehaviour<GameManager> {
@@ -23,7 +24,7 @@ public class GameManager : SingletonBehaviour<GameManager> {
 
     public ObservableValue<bool> DoggoPickUpEnabled = new(false);
 
-    public ToggleButton PickUpButton;
+    public Button PickUpButton;
     public TextMeshProUGUI PickUpsText;
 
     private void Start() {

@@ -13,9 +13,12 @@ public class GameFinishedWindow : MonoBehaviour {
     public Color[] FirstPlaceColors;
 
     public float TargetStatsDisplayX;
+    public float TargetXAfterShowingStats;
     public RectTransform DoggoStatsParent;
     public RectTransform DoggoStatsWindow;
     public GameObject DoggoStatImageCounterDisplayPrefab;
+
+    public RectTransform RTransform => this.transform as RectTransform;
 
     public void Show(int leaderboardIndex) {
         var doggosMerged = PlayerProgress.Instance.MergedDoggos;
@@ -29,7 +32,7 @@ public class GameFinishedWindow : MonoBehaviour {
     }
 
     public void ShowWindow() {
-        (transform as RectTransform).DOAnchorPosY(0, ShowWaitTime);
+        RTransform.DOAnchorPosY(0, ShowWaitTime);
     }
 
     public void ShowMergeDetails() {
@@ -42,6 +45,8 @@ public class GameFinishedWindow : MonoBehaviour {
             counter.UpdateDisplay(count);
         });
         DoggoStatsWindow.gameObject.SetActive(true);
+        //move windows
+        RTransform.DOAnchorPosX(TargetXAfterShowingStats, ShowWaitTime);
         DoggoStatsWindow.DOAnchorPosX(TargetStatsDisplayX, ShowWaitTime);
     }
 }
