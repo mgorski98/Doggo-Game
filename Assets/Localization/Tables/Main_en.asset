@@ -219,6 +219,10 @@ MonoBehaviour:
     m_Localized: 'Note: enabling any of the non-visual modifiers disables leaderboards'
     m_Metadata:
       m_Items: []
+  - m_Id: 5311921518235648
+    m_Localized: Details
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

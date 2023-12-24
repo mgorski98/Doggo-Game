@@ -215,6 +215,10 @@ MonoBehaviour:
     m_Key: game-modifiers-info
     m_Metadata:
       m_Items: []
+  - m_Id: 5311921518235648
+    m_Key: game-over-show-doggo-details
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

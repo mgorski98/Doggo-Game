@@ -19,6 +19,7 @@ public class GameFinishedWindow : MonoBehaviour {
     public GameObject DoggoStatImageCounterDisplayPrefab;
 
     public RectTransform RTransform => this.transform as RectTransform;
+    public bool DetailsShown = false;
 
     public void Show(int leaderboardIndex) {
         var doggosMerged = PlayerProgress.Instance.MergedDoggos;
@@ -36,6 +37,8 @@ public class GameFinishedWindow : MonoBehaviour {
     }
 
     public void ShowMergeDetails() {
+        if (DetailsShown)
+            return;
         PlayerProgress.Instance.MergedDoggos.ForEach(kvp => {
             var (doggoId, count) = kvp;
             var data = PlayerProgress.Instance.DoggoDatas[doggoId];
@@ -46,7 +49,8 @@ public class GameFinishedWindow : MonoBehaviour {
         });
         DoggoStatsWindow.gameObject.SetActive(true);
         //move windows
-        RTransform.DOAnchorPosX(TargetXAfterShowingStats, ShowWaitTime);
-        DoggoStatsWindow.DOAnchorPosX(TargetStatsDisplayX, ShowWaitTime);
+        RTransform.DOAnchorPosX(TargetXAfterShowingStats, ShowWaitTime).SetEase(Ease.InOutBounce);
+        DoggoStatsWindow.DOAnchorPosX(TargetStatsDisplayX, ShowWaitTime).SetEase(Ease.InOutBounce);
+        DetailsShown = true;
     }
 }

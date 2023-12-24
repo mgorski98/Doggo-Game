@@ -221,6 +221,10 @@ MonoBehaviour:
       efekt\xF3w wy\u0142\u0105cza zapisywanie wynik\xF3w"
     m_Metadata:
       m_Items: []
+  - m_Id: 5311921518235648
+    m_Localized: "Szczeg\xF3\u0142y"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
