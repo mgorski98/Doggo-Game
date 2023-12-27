@@ -34,6 +34,9 @@ public class GameManager : SingletonBehaviour<GameManager> {
     [SerializeField]
     private float BlinkInterval = 0.5f;
     private Coroutine DoggoBlinkCoroutine;
+    private bool FirstTimePickingUp = true;
+    [SerializeField]
+    private TextMeshProUGUI FirstTimePickingUpText;
 
     private void Start() {
         DoggoPickUpEnabled.onValueChanged.AddListener(_p => this.ToggleDoggoPickUpMode_Internal());
@@ -79,6 +82,7 @@ public class GameManager : SingletonBehaviour<GameManager> {
     }
 
     private void ToggleDoggoPickUpMode_Internal() {
+        FirstTimePickingUpText.gameObject.SetActive(FirstTimePickingUp);
         Spawner.PickUpModeEnabled = !Spawner.PickUpModeEnabled;
         if (DoggoPickUpEnabled) {
             DoggoBlinkCoroutine ??= StartCoroutine(StartBlinking());
@@ -87,6 +91,7 @@ public class GameManager : SingletonBehaviour<GameManager> {
             DoggoBlinkCoroutine = null;
             FindObjectsOfType<DoggoBehaviour>(false).ForEach(db => db.GetComponent<SpriteRenderer>().color = Color.white);
         }
+        FirstTimePickingUp = false;
     }
 
     private IEnumerator StartBlinking() {

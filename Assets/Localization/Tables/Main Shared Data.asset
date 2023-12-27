@@ -219,6 +219,10 @@ MonoBehaviour:
     m_Key: game-over-show-doggo-details
     m_Metadata:
       m_Items: []
+  - m_Id: 7501151661338624
+    m_Key: pickup-first-time-tutorial-text
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
