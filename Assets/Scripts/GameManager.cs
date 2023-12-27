@@ -1,5 +1,7 @@
 ﻿using Sirenix.Serialization;
 using System.Collections.Generic;
+using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -26,6 +28,12 @@ public class GameManager : SingletonBehaviour<GameManager> {
 
     public Button PickUpButton;
     public TextMeshProUGUI PickUpsText;
+
+    [OdinSerialize]
+    private Dictionary<string, Color> DoggoBlinkColors = new();
+    [SerializeField]
+    private float BlinkInterval = 0.5f;
+    private Coroutine DoggoBlinkCoroutine;
 
     private void Start() {
         DoggoPickUpEnabled.onValueChanged.AddListener(_p => this.ToggleDoggoPickUpMode_Internal());
@@ -71,8 +79,30 @@ public class GameManager : SingletonBehaviour<GameManager> {
     }
 
     private void ToggleDoggoPickUpMode_Internal() {
-        //todo: also enable some sort of pick up indicator
         Spawner.PickUpModeEnabled = !Spawner.PickUpModeEnabled;
+        if (DoggoPickUpEnabled) {
+            DoggoBlinkCoroutine ??= StartCoroutine(StartBlinking());
+        } else {
+            StopCoroutine(DoggoBlinkCoroutine);
+            DoggoBlinkCoroutine = null;
+            FindObjectsOfType<DoggoBehaviour>(false).ForEach(db => db.GetComponent<SpriteRenderer>().color = Color.white);
+        }
+    }
+
+    private IEnumerator StartBlinking() {
+        var currentDoggos = FindObjectsOfType<DoggoBehaviour>(includeInactive: false);
+        var currentRenderers = currentDoggos.Select(db => db.GetComponent<SpriteRenderer>()).ToArray();
+        bool isNextColorWhite = false;
+
+        while (true) {
+            for (int i = 0; i < currentDoggos.Length; ++i) {
+                var renderer = currentRenderers[i];
+                var id = currentDoggos[i].DoggoData.ID;
+                renderer.color = isNextColorWhite ? Color.white : DoggoBlinkColors[id];
+            }
+            isNextColorWhite = !isNextColorWhite;
+            yield return new WaitForSeconds(BlinkInterval);
+        }
     }
 
     public void PickUpDoggo(DoggoBehaviour doggoBehaviour) {
