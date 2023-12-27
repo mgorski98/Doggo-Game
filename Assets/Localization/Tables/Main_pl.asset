@@ -229,6 +229,11 @@ MonoBehaviour:
     m_Localized: "Kliknij w pieska, aby go podnie\u015B\u0107!"
     m_Metadata:
       m_Items: []
+  - m_Id: 7551424517779456
+    m_Localized: "Tabela wynik\xF3w jest wy\u0142\u0105czona kiedy modyfikatory s\u0105
+      w\u0142\u0105czone :("
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

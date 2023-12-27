@@ -227,6 +227,10 @@ MonoBehaviour:
     m_Localized: Click/tap a dog to pick it up!
     m_Metadata:
       m_Items: []
+  - m_Id: 7551424517779456
+    m_Localized: Leaderboards are disabled when game has any modifiers active :(
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

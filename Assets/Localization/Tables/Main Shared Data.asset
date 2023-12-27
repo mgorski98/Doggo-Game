@@ -223,6 +223,10 @@ MonoBehaviour:
     m_Key: pickup-first-time-tutorial-text
     m_Metadata:
       m_Items: []
+  - m_Id: 7551424517779456
+    m_Key: ui-leaderboards-disabled
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
