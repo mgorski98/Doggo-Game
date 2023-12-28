@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
+using System.Collections;
 
 public class PlayerProgress : SingletonBehaviour<PlayerProgress> {
     public ScoreCountingLabel ScoreText;
@@ -21,10 +23,34 @@ public class PlayerProgress : SingletonBehaviour<PlayerProgress> {
     [SerializeField]
     private AudioSource ASource;
 
+    [SerializeField]
+    private int ScoreAnimPlayThreshold = 5_000;
+    [SerializeField]
+    private float ScaleTextUpDuration;
+    [SerializeField]
+    private float ScaleTextDownDuration;
+    [SerializeField]
+    private float TargetScale = 2f;
+    [SerializeField]
+    private Vector3 TargetTextRotation;
+    [SerializeField]
+    private Ease AnimEaseFunc;
+    [SerializeField]
+    private Ease AnimEaseRotationFunc;
+    private int PrevScoreThresholdCount = 0;
+
     protected override void Awake() {
         base.Awake();
 
         this.Score.onValueChanged.AddListener(p => ScoreText.StartCounting(p.Item2));
+        this.Score.onValueChanged.AddListener(p => {
+            var newVal = p.Item2;
+            var remainder = newVal / ScoreAnimPlayThreshold;
+            if (remainder != PrevScoreThresholdCount) {
+                PrevScoreThresholdCount = (int)remainder;
+                PlayScoreTextAnim();
+            }
+        });
         Resources.LoadAll<DoggoData>("Doggos").ForEach(data => DoggoDatas.Add(data.ID, data));
     }
 
@@ -83,4 +109,18 @@ public class PlayerProgress : SingletonBehaviour<PlayerProgress> {
     }
 
     public static List<long> ParseLeaderboards(string input) => string.IsNullOrWhiteSpace(input) ? new() : input.Split(',').Select(long.Parse).OrderByDescending(l => l).ToList();
+
+    private void PlayScoreTextAnim() {
+        StartCoroutine(PlayScoreAnim_Coro());
+    }
+
+    private IEnumerator PlayScoreAnim_Coro() {
+        var text = this.ScoreText.labelText;
+        var oldFontSize = text.fontSize;
+        DOTween.To(() => text.fontSize, (f) => text.fontSize = f, oldFontSize * TargetScale, ScaleTextUpDuration).SetEase(AnimEaseFunc);
+        text.transform.DORotate(TargetTextRotation, ScaleTextUpDuration).SetEase(AnimEaseRotationFunc);
+        yield return new WaitForSeconds(ScaleTextUpDuration);
+        DOTween.To(() => text.fontSize, (f) => text.fontSize = f, oldFontSize, ScaleTextDownDuration).SetEase(AnimEaseFunc);
+        text.transform.DORotate(Vector3.zero, ScaleTextDownDuration).SetEase(AnimEaseRotationFunc);
+    }
 }

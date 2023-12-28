@@ -22,6 +22,9 @@ public class MusicPlayer : SerializedMonoBehaviour
 
     public const float MIN_VOLUME = 0.0001f;
 
+    [Range(0f, 1f)]
+    public float VolumeMultiplier = 0.75f;
+
     private void Awake()
     {
         if (MusicClips.Length <= 0) {
