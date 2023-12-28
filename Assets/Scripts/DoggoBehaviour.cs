@@ -78,6 +78,7 @@ public class DoggoBehaviour : MonoBehaviour, IPoolable, IPointerClickHandler {
 
     public void Reset() {
         EligibleForGameLoss = false;
+        DoggoSpriteRenderer.color = Color.white;
     }
 
     public void OnPointerClick(PointerEventData eventData) {
