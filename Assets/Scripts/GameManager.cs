@@ -115,4 +115,13 @@ public class GameManager : SingletonBehaviour<GameManager> {
         UnityObjectPool.Instance.Reclaim(doggoBehaviour.DoggoData.ID, doggoBehaviour.gameObject);
         Spawner.HandleDoggoPickedUp(doggoBehaviour);
     }
+
+#if UNITY_EDITOR
+    [Sirenix.OdinInspector.DisableInEditorMode]
+    [Sirenix.OdinInspector.Button("End game")]
+    public void Editor_EndGame() {
+        PlayerProgress.Instance.HandleGameOver();
+    }
+#endif
+
 }

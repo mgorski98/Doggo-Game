@@ -2,6 +2,7 @@
 using TMPro;
 using System.Linq;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class GameFinishedWindow : MonoBehaviour {
     public float ShowWaitTime = 0.33f;
@@ -48,6 +49,7 @@ public class GameFinishedWindow : MonoBehaviour {
             counter.UpdateDisplay(count);
         });
         DoggoStatsWindow.gameObject.SetActive(true);
+        LayoutRebuilder.ForceRebuildLayoutImmediate(DoggoStatsParent);
         //move windows
         RTransform.DOAnchorPosX(TargetXAfterShowingStats, ShowWaitTime).SetEase(Ease.InOutBounce);
         DoggoStatsWindow.DOAnchorPosX(TargetStatsDisplayX, ShowWaitTime).SetEase(Ease.InOutBounce);

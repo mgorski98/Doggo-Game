@@ -11486,7 +11486,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7260459431975441655, guid: 56ebc3285b9f71c4e97906d2f7504b65, type: 3}
       propertyPath: m_Type
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7260459431975441655, guid: 56ebc3285b9f71c4e97906d2f7504b65, type: 3}
       propertyPath: m_Sprite
@@ -11502,7 +11502,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7260459431975441655, guid: 56ebc3285b9f71c4e97906d2f7504b65, type: 3}
       propertyPath: m_PixelsPerUnitMultiplier
-      value: 12
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7454280995344437204, guid: 56ebc3285b9f71c4e97906d2f7504b65, type: 3}
       propertyPath: m_Name
@@ -11627,7 +11627,7 @@ PrefabInstance:
       objectReference: {fileID: 828444567}
     - target: {fileID: 8246978379127614175, guid: 2bd2eb1e75a9d634f87570453fe615ba, type: 3}
       propertyPath: m_Type
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8246978379127614175, guid: 2bd2eb1e75a9d634f87570453fe615ba, type: 3}
       propertyPath: m_Sprite
@@ -11643,7 +11643,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8246978379127614175, guid: 2bd2eb1e75a9d634f87570453fe615ba, type: 3}
       propertyPath: m_PixelsPerUnitMultiplier
-      value: 12
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
