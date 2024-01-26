@@ -6853,7 +6853,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 3
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0, g: 0.8392157, b: 0, a: 0.99607843}
   m_FlipX: 0
@@ -12564,9 +12564,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2026378699}
+  - component: {fileID: 2026378703}
   - component: {fileID: 2026378702}
   - component: {fileID: 2026378701}
-  - component: {fileID: 2026378703}
   m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
@@ -12656,11 +12656,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Img1: {fileID: 215265249}
   Img2: {fileID: 943137645}
-  ImageChangeInterval: 45
-  FadeOutDuration: 7.5
+  ImageChangeInterval: 35
+  FadeOutDuration: 5
   Slides:
-  - {fileID: 21300000, guid: b2ff77f9730910344831328f71cf5848, type: 3}
-  - {fileID: 21300000, guid: fccf4bc83e5dfc44e9fcad61839c1959, type: 3}
+  - {fileID: 21300000, guid: f47888214740f3d44b235f2fc9101262, type: 3}
+  - {fileID: 21300000, guid: dd953d81715b1434eb4862914b2d694c, type: 3}
+  - {fileID: 21300000, guid: bc28b1545c3a5d34e87042f804540f46, type: 3}
+  - {fileID: 21300000, guid: ac0d2fc6ee0abc34d95429add0660e03, type: 3}
+  - {fileID: 21300000, guid: 7356bea0008eea04eb3a11221b4ac960, type: 3}
+  - {fileID: 21300000, guid: 07317642a5d3ae3479f19b6c5ac3303f, type: 3}
+  - {fileID: 21300000, guid: 746ac7b33fb0c4b4cb5074722ddd9a79, type: 3}
+  - {fileID: 21300000, guid: 8549e7022c060314c99f68b35f3cb31b, type: 3}
+  - {fileID: 21300000, guid: 525dd801dc513a84a9541af3d9df419f, type: 3}
+  - {fileID: 21300000, guid: 1aa5290e7f186ae43a94b4467e29e593, type: 3}
+  - {fileID: 21300000, guid: f5ce718ea8a4e5b4fb543acc3bff028c, type: 3}
+  - {fileID: 21300000, guid: ef824b2c710088f4fb96141784ff76b7, type: 3}
+  - {fileID: 21300000, guid: 302339ca3444dc947984c722de1dbdbe, type: 3}
+  - {fileID: 21300000, guid: 12604cb105444254cb9014d44a47c403, type: 3}
+  - {fileID: 21300000, guid: af7a2a9759342aa49aee036b6ade0572, type: 3}
+  - {fileID: 21300000, guid: d5dbb06ab363e7d43a736f0b0e300de8, type: 3}
+  - {fileID: 21300000, guid: 3b9ded769e19c464589b78fd0197a26a, type: 3}
 --- !u!1001 &2050012597
 PrefabInstance:
   m_ObjectHideFlags: 0
