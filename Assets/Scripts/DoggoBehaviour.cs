@@ -88,7 +88,11 @@ public class DoggoBehaviour : MonoBehaviour, IPoolable, IPointerClickHandler {
     }
 
     private IEnumerator ClearCollisionFlag() {
-        for (int i = 0; i < WaitFrameAfterMergeCount; ++i)
+        var targetFrameCount = WaitFrameAfterMergeCount;
+#if UNITY_ANDROID
+        targetFrameCount /= 2;
+#endif
+        for (int i = 0; i < targetFrameCount; ++i)
             yield return null;
         CollisionOccurredInFrame = false;
     } 
