@@ -33,6 +33,7 @@ public class MusicPlayer : SerializedMonoBehaviour
         }
         Mixer.GetFloat(MusicVolumeProperty, out MusicVolume);
         MusicVolume = MusicVolume.FromDecibels();
+        Mixer.SetFloat(MusicVolumeProperty, (MusicVolume * VolumeMultiplier).ToDecibels());
     }
 
     private void Update() {
@@ -83,7 +84,7 @@ public class MusicPlayer : SerializedMonoBehaviour
 
     private IEnumerator FadeInCurrentSound(float duration) {
         for (float t = 0; t < duration; t += Time.deltaTime) {
-            var interpValue = Mathf.Lerp(MIN_VOLUME, MusicVolume, t / duration);
+            var interpValue = Mathf.Lerp(MIN_VOLUME, MusicVolume, t / duration) * VolumeMultiplier;
             var newVol = interpValue.ToDecibels();
             Mixer.SetFloat(MusicVolumeProperty, newVol);
             yield return null;

@@ -1077,7 +1077,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: x1
+  m_text: 1x
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a350e2da35af24f42bb07bb82b517f9e, type: 2}
   m_sharedMaterial: {fileID: -4807205863305090020, guid: a350e2da35af24f42bb07bb82b517f9e, type: 2}
@@ -10051,7 +10051,7 @@ MonoBehaviour:
   ProgressFadeOutThreshold: 0.96
   MusicVolume: 0
   PlayRandom: 1
-  VolumeMultiplier: 0.75
+  VolumeMultiplier: 0.492
 --- !u!1 &1474192689
 GameObject:
   m_ObjectHideFlags: 0

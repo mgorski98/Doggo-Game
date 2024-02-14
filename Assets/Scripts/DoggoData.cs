@@ -2,6 +2,7 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 using UnityEngine.Localization;
 
+[SOEditable("Resources/Doggos")]
 [CreateAssetMenu(menuName = "Scriptables/Doggo data", fileName = "New Doggo")]
 public class DoggoData : SerializedScriptableObject
 {

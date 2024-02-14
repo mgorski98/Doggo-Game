@@ -25,13 +25,13 @@ public class UIHelpers : MonoBehaviour
     private void Awake() {
         SoundOn.onValueChanged.AddListener(p => {
             var targetVol = p.Item2 ? 1f : 0.0001f;
-            Mixer.SetFloat("SoundVolume", targetVol.ToDecibels());
+            Mixer.SetFloat("SoundVolume", (targetVol * MusicPlayer.VolumeMultiplier).ToDecibels());
             SoundToggleButton.Toggled = p.Item2;
             PlayerPrefs.SetInt("SOUND_VOLUME", p.Item2.ToInt());
         });
         MusicOn.onValueChanged.AddListener(p => {
             var targetVol = p.Item2 ? 1f : 0.0001f;
-            Mixer.SetFloat("MusicVolume", targetVol.ToDecibels());
+            Mixer.SetFloat("MusicVolume", (targetVol * MusicPlayer.VolumeMultiplier).ToDecibels());
             MusicToggleButton.Toggled = p.Item2;
             PlayerPrefs.SetInt("MUSIC_VOLUME", p.Item2.ToInt());
 
@@ -39,8 +39,8 @@ public class UIHelpers : MonoBehaviour
                 MusicPlayer.MusicVolume = targetVol;
         });
 
-        Mixer.SetFloat("MusicVolume", (PlayerPrefs.GetInt("MUSIC_VOLUME", 1).ToBoolean() ? 1f : 0.0001f).ToDecibels());
-        Mixer.SetFloat("SoundVolume", (PlayerPrefs.GetInt("SOUND_VOLUME", 1).ToBoolean() ? 1f : 0.0001f).ToDecibels());
+        Mixer.SetFloat("MusicVolume", ((PlayerPrefs.GetInt("MUSIC_VOLUME", 1).ToBoolean() ? 1f : 0.0001f) * MusicPlayer.VolumeMultiplier).ToDecibels());
+        Mixer.SetFloat("SoundVolume", ((PlayerPrefs.GetInt("SOUND_VOLUME", 1).ToBoolean() ? 1f : 0.0001f) * MusicPlayer.VolumeMultiplier).ToDecibels());
     }
 
     private void Start() {
