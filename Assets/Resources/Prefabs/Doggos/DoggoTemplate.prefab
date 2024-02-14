@@ -165,6 +165,7 @@ MonoBehaviour:
   HasCollidedAlready: 0
   DoggoData: {fileID: 0}
   EligibleForGameLoss: 0
+  WaitFrameAfterMergeCount: 10
   MaxVelocityMagnitude: 25
 --- !u!114 &5146500262006466095
 MonoBehaviour:

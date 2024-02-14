@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -7,6 +8,12 @@ public class DoggoBehaviour : MonoBehaviour, IPoolable, IPointerClickHandler {
     private SpriteRenderer DoggoSpriteRenderer;
     [SerializeField]
     private bool EligibleForGameLoss = false;
+
+    public static bool CollisionOccurredInFrame = false;
+
+    [SerializeField]
+    [Min(1)]
+    private int WaitFrameAfterMergeCount = 4;
 
     private Rigidbody2D Rbody;
 
@@ -29,21 +36,34 @@ public class DoggoBehaviour : MonoBehaviour, IPoolable, IPointerClickHandler {
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.CompareTag("Doggo") && !HasCollidedAlready && !PlayerProgress.Instance.GameOver) {
-            var behaviour = collision.gameObject.GetComponent<DoggoBehaviour>();
-            if (behaviour.HasCollidedAlready)
-                return;
-            var otherDoggoData = behaviour.DoggoData;
-            if (otherDoggoData.ID != DoggoData.ID)
-                return;
-            behaviour.HasCollidedAlready = true;
-            HasCollidedAlready = true;
-            GameManager.Instance.QueueMerge(gameObject, collision.gameObject, otherDoggoData);
+        if (collision.gameObject.CompareTag("Doggo") && CanDoggoCollide) {
+            HandleCollisionWithDoggo(collision.gameObject.GetComponent<DoggoBehaviour>());
         }
 
         if (collision.gameObject.CompareTag("Doggo")) {
             EligibleForGameLoss = true;
         }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision) {
+        if (collision.gameObject.CompareTag("Doggo") && CanDoggoCollide) {
+            HandleCollisionWithDoggo(collision.gameObject.GetComponent<DoggoBehaviour>());
+        }
+    }
+
+    private bool CanDoggoCollide => !HasCollidedAlready && !PlayerProgress.Instance.GameOver && !CollisionOccurredInFrame;
+
+    private void HandleCollisionWithDoggo(DoggoBehaviour otherDoggo) {
+        if (otherDoggo.HasCollidedAlready)
+            return;
+        var otherDoggoData = otherDoggo.DoggoData;
+        if (otherDoggoData.ID != DoggoData.ID)
+            return;
+        otherDoggo.HasCollidedAlready = true;
+        HasCollidedAlready = true;
+        CollisionOccurredInFrame = true;
+        GameManager.Instance.StartCoroutine(ClearCollisionFlag());
+        GameManager.Instance.QueueMerge(gameObject, otherDoggo.gameObject, otherDoggoData);
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
@@ -66,6 +86,12 @@ public class DoggoBehaviour : MonoBehaviour, IPoolable, IPointerClickHandler {
             EligibleForGameLoss = true;
         }
     }
+
+    private IEnumerator ClearCollisionFlag() {
+        for (int i = 0; i < WaitFrameAfterMergeCount; ++i)
+            yield return null;
+        CollisionOccurredInFrame = false;
+    } 
 
     private void FixedUpdate() {
         Rbody.velocity = Vector2.ClampMagnitude(Rbody.velocity, MaxVelocityMagnitude);
